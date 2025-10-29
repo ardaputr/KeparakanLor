@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Keparakan Lor | Kemantren Mergangsan</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================================================== -->
+    <!-- TOP BAR -->
+    <!-- ===================================================== -->
+    <div class="topbar">
+      <div class="topbar-inner">
+        <div class="top-left">
+          <div>
+            <span class="meta-icon">📞</span>
+            0812-3456-7890
+          </div>
+          <div>|</div>
+          <div>
+            <span class="meta-icon">✉️</span>
+            kelurahan.keparakanlor@example.go.id
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="socials">
+            <a href="#" aria-label="facebook">📘</a>
+            <a href="#" aria-label="twitter">🐦</a>
+            <a href="#" aria-label="youtube">▶️</a>
+            <a href="#" aria-label="instagram">📸</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- NAVBAR -->
+    <!-- ===================================================== -->
+    <header class="navbar">
+      <div class="nav-inner">
+        <!-- Brand -->
+        <div class="brand">
+          <div class="brand-logo">
+            <img
+              src="img/logo-keparakanlor.png"
+              alt="Logo"
+              style="width: 100%; height: 100%; object-fit: cover"
+            />
+          </div>
+          <div class="brand-title">
+            <span class="main">Keparakan Lor</span>
+            <span class="sub">Kemantren Mergangsan · Kota Yogyakarta</span>
+          </div>
+        </div>
+
+        <!-- Links -->
+        <nav class="nav-links-wrapper">
+          <a class="nav-link active" href="#home">Home</a>
+
+          <div class="dropdown">
+            <div class="nav-link">
+              Profil
+              <span class="meta-icon">▾</span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#profil-sejarah">Sejarah</a>
+              <a class="dropdown-item" href="#profil-visimisi"
+                >Visi &amp; Misi</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link">
+              Informasi
+              <span class="meta-icon">▾</span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#agenda">Agenda</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link">
+              Demografis
+              <span class="meta-icon">▾</span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#statistik">Tingkat Kemiskinan</a>
+              <a class="dropdown-item" href="#statistik"
+                >Kesehatan Masyarakat</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link">
+              Media
+              <span class="meta-icon">▾</span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#galeri">Foto</a>
+              <a class="dropdown-item" href="#video">Video</a>
+            </div>
+          </div>
+
+          <!-- <a class="nav-link" href="#lapak">Lapak UMKM</a> -->
+
+          <!-- Urban Farming jadi dropdown -->
+          <div class="dropdown">
+            <div class="nav-link">
+              Urban Farming
+              <span class="meta-icon">▾</span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="#urban">Deskripsi</a>
+              <a class="dropdown-item" href="#menanam">Cara Menanam</a>
+            </div>
+          </div>
+
+          <!-- Dark Mode Toggle -->
+          <div class="dark-toggle" id="darkToggle" title="Toggle Dark Mode">
+            <div class="toggle-ball" id="toggleBall">🌙</div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ===================================================== -->
+    <!-- HERO -->
+    <!-- ===================================================== -->
+    <section id="home" class="hero">
+      <div class="hero-bg"></div>
+
+      <div class="hero-inner">
+        <div class="hero-title">
+          Selamat Datang di Website Keparakan&nbsp;Lor
+        </div>
+        <div class="hero-desc">
+          Pusat layanan informasi resmi wilayah Keparakan Lor<br />
+          Kemantren Mergangsan, Kota Yogyakarta
+        </div>
+      </div>
+
+      <div class="hero-nav-arrows">
+        <span id="heroPrev">❮</span>
+        <span id="heroNext">❯</span>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- INTRO / PROFIL SINGKAT -->
+    <!-- ===================================================== -->
+    <section class="section">
+      <div class="container intro-grid">
+        <div class="intro-logo-box">
+          <img
+            src="img/logo-keparakanlor.png"
+            alt="Lambang Keparakan Lor"
+            style="width: 100%; height: auto"
+          />
+        </div>
+        <div class="intro-content">
+          <h2>Website Keparakan Lor</h2>
+          <p>
+            Website resmi Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
+            Media komunikasi, informasi pelayanan publik, serta transparansi
+            pemerintahan kelurahan / kampung kepada seluruh warga.
+          </p>
+          <p>
+            Melalui laman ini, warga dapat mengakses profil wilayah, data
+            demografi, agenda kegiatan, berita, layanan administrasi surat, dan
+            kanal pengaduan masyarakat.
+          </p>
+
+          <button class="btn-primary">
+            <span>Profil Keparakan Lor</span>
+            <span>➡</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- STATISTIK / DEMOGRAFI (HANYA 2 DATA) -->
+    <!-- ===================================================== -->
+    <section id="statistik" class="section">
+      <div class="container">
+        <div class="stats-header">
+          <h2>Statistik Keparakan Lor</h2>
+          <p>Data sosial dasar wilayah kami</p>
+        </div>
+
+        <div class="stats-cards--2col">
+          <!-- KEMISKINAN -->
+          <div class="stat-card">
+            <div class="stat-icon bg-orange">📉</div>
+            <div class="stat-title">Tingkat Kemiskinan</div>
+            <div class="stat-desc">
+              <span class="kemiskinan-data">…% warga</span> berada pada kategori
+              pra-sejahtera / rentan miskin.
+              <!-- contoh nanti: 12% warga pra-sejahtera -->
+            </div>
+          </div>
+
+          <!-- KESEHATAN -->
+          <div class="stat-card">
+            <div class="stat-icon bg-blue">🏥</div>
+            <div class="stat-title">Kesehatan Masyarakat</div>
+            <div class="stat-desc">
+              Cakupan posyandu, imunisasi dasar, dan pemantauan kesehatan
+              lingkungan.
+              <!-- contoh nanti: 95% balita aktif posyandu -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- AGENDA -->
+    <!-- ===================================================== -->
+    <section id="agenda" class="section">
+      <div class="container">
+        <div class="section-header-row">
+          <h2>Agenda</h2>
+          <a href="#" class="more-link">Semua Agenda ➜</a>
+        </div>
+
+        <div class="slider-wrapper">
+          <div class="slider-track" id="agendaTrack">
+            <!-- Card 1 -->
+            <article class="agenda-card">
+              <div class="agenda-img">
+                <img src="img/agenda1.jpg" alt="Agenda 1" />
+              </div>
+              <div class="agenda-body">
+                <h3 class="agenda-title">Musyawarah Warga RW 01</h3>
+                <div class="agenda-meta">
+                  <span class="meta-icon">📅</span>
+                  <span>12 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Pembahasan penataan UMKM kuliner &amp; branding kampung
+                  tematik.
+                </p>
+              </div>
+            </article>
+
+            <!-- Card 2 -->
+            <article class="agenda-card">
+              <div class="agenda-img">
+                <img src="img/agenda2.jpg" alt="Agenda 2" />
+              </div>
+              <div class="agenda-body">
+                <h3 class="agenda-title">Kerja Bakti Kebersihan</h3>
+                <div class="agenda-meta">
+                  <span class="meta-icon">📅</span>
+                  <span>16 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Aksi bersih lingkungan dan pemilahan sampah menuju kampung
+                  hijau.
+                </p>
+              </div>
+            </article>
+
+            <!-- Card 3 -->
+            <article class="agenda-card">
+              <div class="agenda-img">
+                <img src="img/agenda3.jpg" alt="Agenda 3" />
+              </div>
+              <div class="agenda-body">
+                <h3 class="agenda-title">Pelatihan Kewirausahaan UMKM</h3>
+                <div class="agenda-meta">
+                  <span class="meta-icon">📅</span>
+                  <span>20 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Peningkatan kapasitas pelaku usaha lokal (branding,
+                  pengemasan, pemasaran digital).
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="slider-dots" id="agendaDots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- BERITA -->
+    <!-- ===================================================== -->
+    <section id="berita" class="section">
+      <div class="container">
+        <div class="section-header-row">
+          <h2>Berita</h2>
+          <a href="#" class="more-link">Semua Berita ➜</a>
+        </div>
+
+        <div class="news-grid-wrapper">
+          <div class="news-track" id="newsTrack">
+            <!-- Berita 1 -->
+            <article class="news-card">
+              <div
+                class="news-img"
+                style="background-image: url('img/berita1.jpg')"
+              ></div>
+              <div class="news-body">
+                <h3 class="news-title">Launching Kampung Kuliner Pagoda</h3>
+                <div class="news-meta">
+                  <span class="meta-icon">👤</span><span>Admin</span>
+                  <span class="meta-icon">📅</span><span>10 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Keparakan Lor mengembangkan potensi kuliner lokal sebagai daya
+                  tarik ekonomi kreatif...
+                </p>
+              </div>
+            </article>
+
+            <!-- Berita 2 -->
+            <article class="news-card">
+              <div
+                class="news-img"
+                style="background-image: url('img/berita2.jpg')"
+              ></div>
+              <div class="news-body">
+                <h3 class="news-title">
+                  Pelayanan Surat Online Mulai Diterapkan
+                </h3>
+                <div class="news-meta">
+                  <span class="meta-icon">👤</span><span>Admin 2</span>
+                  <span class="meta-icon">📅</span><span>05 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Warga kini dapat mengajukan surat domisili, usaha kecil, dan
+                  pengantar RT/RW secara online...
+                </p>
+              </div>
+            </article>
+
+            <!-- Berita 3 -->
+            <article class="news-card">
+              <div
+                class="news-img"
+                style="background-image: url('img/berita3.jpg')"
+              ></div>
+              <div class="news-body">
+                <h3 class="news-title">
+                  Kegiatan Posyandu &amp; Edukasi Kesehatan
+                </h3>
+                <div class="news-meta">
+                  <span class="meta-icon">👤</span><span>Admin 3</span>
+                  <span class="meta-icon">📅</span><span>01 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Pemeriksaan kesehatan ibu-anak dan sosialisasi pencegahan DBD.
+                </p>
+              </div>
+            </article>
+
+            <!-- Berita 4 -->
+            <article class="news-card">
+              <div
+                class="news-img"
+                style="background-image: url('img/berita4.jpg')"
+              ></div>
+              <div class="news-body">
+                <h3 class="news-title">Program Bank Sampah Warga</h3>
+                <div class="news-meta">
+                  <span class="meta-icon">👤</span><span>Admin 4</span>
+                  <span class="meta-icon">📅</span><span>28 Okt 2025</span>
+                </div>
+                <p class="news-desc">
+                  Pemilahan sampah rumah tangga untuk nilai ekonomi dan
+                  lingkungan bersih...
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="slider-dots" id="newsDots">
+            <div class="dot active" data-slide="0"></div>
+            <div class="dot" data-slide="1"></div>
+            <div class="dot" data-slide="2"></div>
+            <div class="dot" data-slide="3"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- URBAN FARMING (DESKRIPSI + FOTO + MAP) -->
+    <!-- ===================================================== -->
+    <section id="urban" class="section urban-section">
+      <div class="container">
+        <div class="section-header-row">
+          <h2>Urban Farming</h2>
+          <a href="#" class="more-link">Lihat Selengkapnya ➜</a>
+        </div>
+
+        <div class="urban-grid">
+          <!-- Kiri: deskripsi saja -->
+          <div class="urban-left">
+            <div class="urban-about-card">
+              <h3 class="urban-title">Program Pertanian Kampung</h3>
+              <p class="urban-desc">
+                Urban Farming Keparakan Lor adalah gerakan warga untuk
+                memanfaatkan lahan sempit (pekarangan, lorong gang, rooftop)
+                menjadi kebun sayur, toga (tanaman obat keluarga), dan tanaman
+                produktif lain. Tujuan utamanya: kemandirian pangan keluarga,
+                edukasi generasi muda, dan lingkungan yang lebih hijau.
+              </p>
+              <p class="urban-desc">
+                Kegiatan ini dikelola gotong royong oleh warga, ibu-ibu PKK,
+                karang taruna, dan kelompok hijau kampung. Hasil panen sebagian
+                digunakan untuk konsumsi rumah tangga, sebagian lagi dijual
+                sebagai dukungan ekonomi warga.
+              </p>
+            </div>
+          </div>
+
+          <!-- Kanan: foto2 & maps -->
+          <div class="urban-right">
+            <div class="urban-photo-grid">
+              <div class="urban-photo-item">
+                <img src="img/urban1.jpg" alt="Urban Farming 1" />
+              </div>
+              <div class="urban-photo-item">
+                <img src="img/urban2.jpg" alt="Urban Farming 2" />
+              </div>
+              <div class="urban-photo-item">
+                <img src="img/urban3.jpg" alt="Urban Farming 3" />
+              </div>
+              <div class="urban-photo-item">
+                <img src="img/urban4.jpg" alt="Urban Farming 4" />
+              </div>
+            </div>
+
+            <div class="urban-map-card">
+              <h4 class="urban-subtitle">Lokasi Kebun / Demo Plot</h4>
+              <div class="urban-map-frame">
+                <!-- Ganti src berikut pakai embed maps titik kebun di Keparakan Lor -->
+                <iframe
+                  class="urban-map-iframe"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3..."
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                  referrerpolicy="no-referrer-when-downgrade"
+                ></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- GALERI FOTO -->
+    <!-- ===================================================== -->
+    <section id="galeri" class="section">
+      <div class="container">
+        <div class="section-header-row">
+          <h2>Foto</h2>
+          <a href="#" class="more-link">Semua Foto ➜</a>
+        </div>
+
+        <div class="gallery-grid">
+          <div class="gallery-item">
+            <img src="img/foto1.jpg" alt="Foto 1" />
+          </div>
+          <div class="gallery-item">
+            <img src="img/foto2.jpg" alt="Foto 2" />
+          </div>
+          <div class="gallery-item">
+            <img src="img/foto3.jpg" alt="Foto 3" />
+          </div>
+          <div class="gallery-item">
+            <img src="img/foto4.jpg" alt="Foto 4" />
+          </div>
+          <div class="gallery-item">
+            <img src="img/foto5.jpg" alt="Foto 5" />
+          </div>
+          <div class="gallery-item">
+            <img src="img/foto6.jpg" alt="Foto 6" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- VIDEO -->
+    <!-- ===================================================== -->
+    <section id="video" class="section">
+      <div class="container">
+        <div class="section-header-row">
+          <h2>Video</h2>
+          <a href="#" class="more-link">Semua Video ➜</a>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/aETNYyrqNYE"
+              title="Video 1"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <div class="video-frame">
+            <iframe
+              src="https://www.youtube.com/embed/GfO-3Oir-qM"
+              title="Video 2"
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== -->
+    <!-- FOOTER -->
+    <!-- ===================================================== -->
+    <footer class="footer" id="lapak">
+      <div class="container footer-grid">
+        <!-- Tentang -->
+        <div>
+          <div class="footer-title">Tentang Web</div>
+          <div class="footer-logo">
+            <img
+              src="img/logo-keparakanlor.png"
+              alt="Logo Keparakan Lor"
+              style="width: 100%; height: auto"
+            />
+          </div>
+          <p>
+            Website resmi Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
+            Media informasi publik dan transparansi pemerintah
+            kelurahan/kampung.
+          </p>
+        </div>
+
+        <!-- Kontak Desa -->
+        <div>
+          <div class="footer-title">Kontak</div>
+          <p>
+            📍 Jl. .........., Keparakan Lor,<br />
+            Mergangsan, Yogyakarta, 55153
+          </p>
+          <p>📞 0812-3456-7890</p>
+          <p>✉️ admin@keparakanlor.go.id</p>
+        </div>
+
+        <!-- Kontak Penting -->
+        <div>
+          <div class="footer-title">Kontak Penting</div>
+          <p>Puskesmas - (0274) 000000</p>
+          <p>Polsek - (0274) 000001</p>
+          <p>Damkar - (0274) 000002</p>
+          <p>PLN - 123</p>
+        </div>
+
+        <!-- Link Aplikasi -->
+        <div>
+          <div class="footer-title">Layanan Warga</div>
+          <a href="#">Sistem Informasi Kelurahan</a>
+          <a href="#">Pengaduan Online</a>
+          <a href="#">Pengajuan Surat</a>
+          <a href="#">Info Kesehatan</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <div>Copyright © Keparakan Lor · All rights reserved</div>
+        <div class="footer-soc">
+          <a href="#">📘</a>
+          <a href="#">🐦</a>
+          <a href="#">▶️</a>
+          <a href="#">📸</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ===================================================== -->
+    <!-- SCROLL TO TOP BUTTON -->
+    <!-- ===================================================== -->
+    <div class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
+      ⬆
+    </div>
+
+    <!-- JS -->
+    <script src="main.js"></script>
+  </body>
+</html>
