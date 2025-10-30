@@ -11,20 +11,23 @@ const toggleBall = document.getElementById("toggleBall");
 function setDarkMode(on) {
   if (on) {
     document.body.classList.add("dark");
-    toggleBall.innerHTML = '<i class="fas fa-sun"></i>'; // Ganti ikon menjadi matahari
+    toggleBall.innerHTML = '<i class="fas fa-sun"></i>';
   } else {
     document.body.classList.remove("dark");
-    toggleBall.innerHTML = '<i class="fas fa-moon"></i>'; // Ganti ikon menjadi bulan
+    toggleBall.innerHTML = '<i class="fas fa-moon"></i>';
   }
 }
 
 // simpan preferensi di localStorage
 if (darkToggle) {
-    darkToggle.addEventListener("click", () => {
-        const currentlyDark = document.body.classList.contains("dark");
-        setDarkMode(!currentlyDark);
-        localStorage.setItem("prefers-dark-keparakanlor", !currentlyDark ? "1" : "0");
-    });
+  darkToggle.addEventListener("click", () => {
+    const currentlyDark = document.body.classList.contains("dark");
+    setDarkMode(!currentlyDark);
+    localStorage.setItem(
+      "prefers-dark-keparakanlor",
+      !currentlyDark ? "1" : "0"
+    );
+  });
 }
 
 // init dark mode dari storage
@@ -43,66 +46,120 @@ if (darkToggle) {
 const scrollBtn = document.getElementById("scrollTopBtn");
 
 if (scrollBtn) {
-    scrollBtn.addEventListener("click", () => {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    });
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
 
-    window.addEventListener("scroll", () => {
-        if (window.scrollY > 300) { 
-            scrollBtn.style.display = "flex";
-            scrollBtn.style.opacity = "1";
-        } else {
-            scrollBtn.style.opacity = "0";
-            // Berikan sedikit delay sebelum menyembunyikan display agar transisi opacity terlihat
-            setTimeout(() => {
-                if (window.scrollY <= 300) {
-                    scrollBtn.style.display = "none";
-                }
-            }, 300); 
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.style.display = "flex";
+      scrollBtn.style.opacity = "1";
+    } else {
+      scrollBtn.style.opacity = "0";
+      setTimeout(() => {
+        if (window.scrollY <= 300) {
+          scrollBtn.style.display = "none";
         }
-    });
+      }, 300);
+    }
+  });
 }
-
 
 // =====================
 // NAVIGASI MOBILE TOGGLE (Hamburger Menu)
 // =====================
-const menuToggle = document.getElementById('menuToggle');
-const navLinks = document.getElementById('navLinks');
-const navbar = document.getElementById('navbar');
+const menuToggle = document.getElementById("menuToggle");
+const navLinks = document.getElementById("navLinks");
+const navbar = document.getElementById("navbar");
 
 if (menuToggle) {
-    menuToggle.addEventListener('click', () => {
-        navLinks.classList.toggle('open');
-        navbar.classList.toggle('menu-open');
-        
-        // Ganti ikon hamburger/close
-        const icon = menuToggle.querySelector('i');
-        if (navLinks.classList.contains('open')) {
-            icon.classList.remove('fa-bars');
-            icon.classList.add('fa-times'); // Ikon silang/close
-        } else {
-            icon.classList.remove('fa-times');
-            icon.classList.add('fa-bars'); // Ikon hamburger
-        }
-    });
+  menuToggle.addEventListener("click", () => {
+    navLinks.classList.toggle("open");
+    navbar.classList.toggle("menu-open");
 
-    // Tutup menu saat link diklik (terutama di mobile)
-    document.querySelectorAll('.nav-links-wrapper a').forEach(link => {
-        link.addEventListener('click', () => {
-            if (navLinks.classList.contains('open')) {
-                navLinks.classList.remove('open');
-                navbar.classList.remove('menu-open');
-                menuToggle.querySelector('i').classList.remove('fa-times');
-                menuToggle.querySelector('i').classList.add('fa-bars');
-            }
-        });
+    const icon = menuToggle.querySelector("i");
+    if (navLinks.classList.contains("open")) {
+      icon.classList.remove("fa-bars");
+      icon.classList.add("fa-times");
+    } else {
+      icon.classList.remove("fa-times");
+      icon.classList.add("fa-bars");
+    }
+  });
+
+  document.querySelectorAll(".nav-links-wrapper a").forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navLinks.classList.contains("open")) {
+        navLinks.classList.remove("open");
+        navbar.classList.remove("menu-open");
+        menuToggle.querySelector("i").classList.remove("fa-times");
+        menuToggle.querySelector("i").classList.add("fa-bars");
+      }
     });
+  });
 }
 
+// =====================================================
+// DROPDOWN NAVBAR (CLICK TOGGLE)
+// =====================================================
+// ambil semua .dropdown di navbar
+const dropdowns = document.querySelectorAll(".navbar .dropdown");
+
+function closeAllDropdowns(except = null) {
+  dropdowns.forEach((dd) => {
+    if (dd !== except) {
+      dd.classList.remove("open");
+    }
+  });
+}
+
+dropdowns.forEach((dropdown) => {
+  const toggleBtn = dropdown.querySelector(".dropdown-toggle-btn");
+  if (!toggleBtn) return;
+
+  // klik di judul dropdown
+  toggleBtn.addEventListener("click", (e) => {
+    e.stopPropagation(); // biar nggak ketutup langsung
+    const isOpen = dropdown.classList.contains("open");
+    // tutup semua dulu
+    closeAllDropdowns();
+    // toggle yang ini
+    if (!isOpen) {
+      dropdown.classList.add("open");
+    } else {
+      dropdown.classList.remove("open");
+    }
+  });
+
+  // boleh juga dibuka pakai Enter (aksesibilitas)
+  toggleBtn.addEventListener("keydown", (e) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleBtn.click();
+    }
+  });
+});
+
+// klik di luar navbar -> tutup semua dropdown
+document.addEventListener("click", (e) => {
+  const isInsideNavbar = e.target.closest(".navbar");
+  if (!isInsideNavbar) {
+    closeAllDropdowns();
+  }
+});
+
+// kalau di mobile, saat menu ditutup, dropdown juga ditutup
+if (menuToggle) {
+  menuToggle.addEventListener("click", () => {
+    if (!navLinks.classList.contains("open")) {
+      // berarti baru saja ditutup
+      closeAllDropdowns();
+    }
+  });
+}
 
 // =====================================================
-// HERO SLIDER (CAROUSEL OTOMATIS)
+// HERO SLIDER
 // =====================================================
 const heroTrack = document.getElementById("heroTrack");
 const heroPrev = document.getElementById("heroPrev");
@@ -112,69 +169,61 @@ const totalHeroSlides = heroDots ? heroDots.length : 0;
 let heroSlide = 0;
 let autoSlideInterval;
 
-
 function updateHeroSlider(index) {
-    if (!heroTrack) return;
-    
-    // Hitung slide baru (melingkar/looping)
-    if (index >= totalHeroSlides) {
-        heroSlide = 0;
-    } else if (index < 0) {
-        heroSlide = totalHeroSlides - 1;
-    } else {
-        heroSlide = index;
+  if (!heroTrack) return;
+
+  if (index >= totalHeroSlides) {
+    heroSlide = 0;
+  } else if (index < 0) {
+    heroSlide = totalHeroSlides - 1;
+  } else {
+    heroSlide = index;
+  }
+
+  const offset = heroSlide * 100;
+  heroTrack.style.transform = "translateX(-" + offset + "%)";
+
+  heroDots.forEach((dot, i) => {
+    dot.classList.remove("active");
+    if (i === heroSlide) {
+      dot.classList.add("active");
     }
+  });
 
-    // Geser track
-    const offset = heroSlide * 100;
-    heroTrack.style.transform = "translateX(-" + offset + "%)";
-
-    // Perbarui dots
-    heroDots.forEach((dot, i) => {
-        dot.classList.remove("active");
-        if (i === heroSlide) {
-            dot.classList.add("active");
-        }
-    });
-    
-    // Reset interval saat ada interaksi manual
-    resetAutoSlide();
+  resetAutoSlide();
 }
 
 function startAutoSlide() {
-    autoSlideInterval = setInterval(() => {
-        updateHeroSlider(heroSlide + 1);
-    }, 3000); // Geser otomatis setiap 3 detik
+  autoSlideInterval = setInterval(() => {
+    updateHeroSlider(heroSlide + 1);
+  }, 3000);
 }
 
 function resetAutoSlide() {
-    clearInterval(autoSlideInterval);
-    startAutoSlide();
+  clearInterval(autoSlideInterval);
+  startAutoSlide();
 }
 
-// Event Listeners Panah
 if (heroPrev && heroNext) {
-    heroPrev.addEventListener("click", () => {
-        updateHeroSlider(heroSlide - 1);
-    });
-    heroNext.addEventListener("click", () => {
-        updateHeroSlider(heroSlide + 1);
-    });
+  heroPrev.addEventListener("click", () => {
+    updateHeroSlider(heroSlide - 1);
+  });
+  heroNext.addEventListener("click", () => {
+    updateHeroSlider(heroSlide + 1);
+  });
 }
 
-// Event Listeners Dots
 if (heroDots.length) {
-    heroDots.forEach((dot) => {
-        dot.addEventListener("click", () => {
-            const idx = parseInt(dot.getAttribute("data-slide"), 10);
-            updateHeroSlider(idx);
-        });
+  heroDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const idx = parseInt(dot.getAttribute("data-slide"), 10);
+      updateHeroSlider(idx);
     });
+  });
 }
-
 
 // =====================================================
-// SLIDER FUNCTIONS (Agenda dan Berita)
+// SLIDER AGENDA & BERITA
 // =====================================================
 const agendaTrack = document.getElementById("agendaTrack");
 const agendaDots = document.querySelectorAll("#agendaDots .dot");
@@ -183,16 +232,14 @@ const newsTrack = document.getElementById("newsTrack");
 const newsDots = document.querySelectorAll("#newsDots .dot");
 let newsSlide = 0;
 
-
 function updateSlider(track, dots, index) {
   if (!track || !track.children.length) return;
-  
+
   const card = track.children[0];
-  // Mengambil lebar kartu + jarak antar kartu (24px = 1.5rem)
-  const cardWidth = card.getBoundingClientRect().width + 24; 
-  
+  const cardWidth = card.getBoundingClientRect().width + 24;
+
   track.style.transform = "translateX(" + -cardWidth * index + "px)";
-  
+
   dots.forEach((d, i) => {
     if (i === index) {
       d.classList.add("active");
@@ -200,73 +247,62 @@ function updateSlider(track, dots, index) {
       d.classList.remove("active");
     }
   });
-  
-  // Perbarui variabel slide global
+
   if (track.id === "agendaTrack") {
-      agendaSlide = index;
+    agendaSlide = index;
   } else if (track.id === "newsTrack") {
-      newsSlide = index;
+    newsSlide = index;
   }
 }
 
-// Handler untuk Agenda Slider
 function updateAgendaSlider(index) {
-    updateSlider(agendaTrack, agendaDots, index);
+  updateSlider(agendaTrack, agendaDots, index);
 }
-// Handler untuk News Slider
+
 function updateNewsSlider(index) {
-    updateSlider(newsTrack, newsDots, index);
+  updateSlider(newsTrack, newsDots, index);
 }
 
-
-// Event Listeners untuk Dots Agenda
 if (agendaDots.length) {
-    agendaDots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        const idx = parseInt(dot.getAttribute("data-slide"), 10);
-        updateAgendaSlider(idx);
-      });
+  agendaDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const idx = parseInt(dot.getAttribute("data-slide"), 10);
+      updateAgendaSlider(idx);
     });
+  });
 }
 
-// Event Listeners untuk Dots Berita
 if (newsDots.length) {
-    newsDots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        const idx = parseInt(dot.getAttribute("data-slide"), 10);
-        updateNewsSlider(idx);
-      });
+  newsDots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      const idx = parseInt(dot.getAttribute("data-slide"), 10);
+      updateNewsSlider(idx);
     });
+  });
 }
-
 
 // =====================
-// Responsif: hitung ulang lebar kartu saat resize
+// Responsif: hitung ulang saat resize
 // =====================
 window.addEventListener("resize", () => {
-  // Hitung ulang posisi slider saat lebar layar berubah
   updateAgendaSlider(agendaSlide);
   updateNewsSlider(newsSlide);
 });
 
+// =====================
+// Init
+// =====================
+document.addEventListener("DOMContentLoaded", () => {
+  if (heroTrack) {
+    updateHeroSlider(0);
+    startAutoSlide();
+  }
 
-// =====================
-// Init Posisi Awal
-// =====================
-document.addEventListener('DOMContentLoaded', () => {
-    // Init Hero Slider dan mulai otomatis
-    if (heroTrack) {
-        updateHeroSlider(0);
-        startAutoSlide();
-    }
-    
-    // Init Agenda & News Slider
-    updateAgendaSlider(0);
-    updateNewsSlider(0);
-    
-    // Init tombol scroll top
-    if (scrollBtn) {
-        scrollBtn.style.display = "none";
-        scrollBtn.style.opacity = "0";
-    }
+  updateAgendaSlider(0);
+  updateNewsSlider(0);
+
+  if (scrollBtn) {
+    scrollBtn.style.display = "none";
+    scrollBtn.style.opacity = "0";
+  }
 });

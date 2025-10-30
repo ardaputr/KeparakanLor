@@ -6,10 +6,17 @@
     <title>Profil Keparakan Lor | Kemantren Mergangsan</title>
 
     <link rel="stylesheet" href="style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
   </head>
   <body>
+    <!-- TOP BAR -->
     <div class="topbar">
       <div class="topbar-inner container">
         <div class="top-left">
@@ -25,88 +32,98 @@
         </div>
         <div class="top-right">
           <div class="socials">
-            <a href="#" aria-label="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" aria-label="twitter" title="Twitter"><i class="fab fa-twitter"></i></a>
-            <a href="#" aria-label="youtube" title="Youtube"><i class="fab fa-youtube"></i></a>
-            <a href="#" aria-label="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="facebook" title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="twitter" title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" aria-label="youtube" title="Youtube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a href="#" aria-label="instagram" title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- NAVBAR -->
     <header class="navbar" id="navbar">
       <div class="nav-inner container">
         <div class="brand">
           <div class="brand-logo">
-            <img
-              src="img/logo-keparakanlor.png"
-              alt="Logo"
-            />
+            <img src="img/logo-pemerintah-keparakanlor.png" alt="Logo" />
           </div>
           <div class="brand-title">
             <span class="main">Keparakan Lor</span>
             <span class="sub">Kemantren Mergangsan · Kota Yogyakarta</span>
           </div>
         </div>
-        
-        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-            <i class="fas fa-bars"></i>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
         </button>
 
         <nav class="nav-links-wrapper" id="navLinks">
           <a class="nav-link active" href="#home">Home</a>
 
+          <!-- dropdown 1 -->
           <div class="dropdown">
-            <div class="nav-link">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
               Profil
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#profil-sejarah">Sejarah</a>
-              <a class="dropdown-item" href="#profil-visimisi">Visi & Misi</a>
+              <a class="dropdown-item" href="#profil-visimisi"
+                >Visi &amp; Misi</a
+              >
             </div>
           </div>
 
+          <!-- dropdown 2 -->
           <div class="dropdown">
-            <div class="nav-link">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
               Informasi
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#agenda">Agenda</a>
+              <a class="dropdown-item" href="#">Urban Farming</a>
             </div>
           </div>
 
+          <!-- dropdown 3 -->
           <div class="dropdown">
-            <div class="nav-link">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
               Demografis
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#statistik-kemiskinan">Tingkat Kemiskinan</a>
-              <a class="dropdown-item" href="#statistik-kesehatan">Kesehatan Masyarakat</a>
+              <a class="dropdown-item" href="#statistik-kemiskinan"
+                >Tingkat Kemiskinan</a
+              >
+              <a class="dropdown-item" href="#statistik-kesehatan"
+                >Kesehatan Masyarakat</a
+              >
             </div>
           </div>
 
+          <!-- dropdown 4 -->
           <div class="dropdown">
-            <div class="nav-link">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
               Media
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="#galeri">Foto</a>
               <a class="dropdown-item" href="#video">Video</a>
-            </div>
-          </div>
-
-          <div class="dropdown">
-            <div class="nav-link">
-              Urban Farming
-              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
-            </div>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#urban">Deskripsi</a>
-              <a class="dropdown-item" href="#menanam">Cara Menanam</a>
             </div>
           </div>
 
@@ -117,44 +134,54 @@
       </div>
     </header>
 
+    <!-- HERO -->
     <section id="home" class="hero">
-    <div class="hero-slider-track" id="heroTrack">
-        <div class="hero-slide" style="background-image: url('img/hero-keparakanlor-1.jpg');"></div>
-        <div class="hero-slide" style="background-image: url('img/hero-keparakanlor-2.jpg');"></div>
-        <div class="hero-slide" style="background-image: url('img/hero-keparakanlor-3.jpg');"></div>
-    </div>
+      <div class="hero-slider-track" id="heroTrack">
+        <div
+          class="hero-slide"
+          style="background-image: url('img/hero-keparakanlor-1.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('img/hero-keparakanlor-2.jpg')"
+        ></div>
+        <div
+          class="hero-slide"
+          style="background-image: url('img/hero-keparakanlor-3.jpg')"
+        ></div>
+      </div>
 
-    <div class="hero-inner">
-        <div class="hero-title">
-            Selamat Datang di Website Keparakan Lor
-        </div>
+      <div class="hero-inner">
+        <div class="hero-title">Selamat Datang di Website Keparakan Lor</div>
         <div class="hero-desc">
-            Pusat layanan informasi resmi wilayah Keparakan Lor<br />
-            Kemantren Mergangsan, Kota Yogyakarta
+          Pusat layanan informasi resmi wilayah Keparakan Lor<br />
+          Kemantren Mergangsan, Kota Yogyakarta
         </div>
-    </div>
+      </div>
 
-    <div class="hero-nav-arrows">
+      <div class="hero-nav-arrows">
         <span id="heroPrev" title="Previous">❮</span>
         <span id="heroNext" title="Next">❯</span>
-    </div>
-    
-    <div class="slider-dots hero-dots" id="heroDots">
+      </div>
+
+      <div class="slider-dots hero-dots" id="heroDots">
         <div class="dot active" data-slide="0"></div>
         <div class="dot" data-slide="1"></div>
         <div class="dot" data-slide="2"></div>
-    </div>
-</section>
+      </div>
+    </section>
 
+    <!-- INTRO -->
     <section class="section">
       <div class="container intro-grid">
         <div class="intro-logo-box">
           <img
-            src="img/logo-keparakanlor.png"
+            src="img/logo-pemerintah-keparakanlor.png"
             alt="Lambang Keparakan Lor"
-            style="width: 100%; height: auto"
+            class="intro-logo"
           />
         </div>
+
         <div class="intro-content">
           <h2>Website Keparakan Lor</h2>
           <p>
@@ -176,7 +203,8 @@
       </div>
     </section>
 
-    <section id="statistik" class="section">
+    <!-- STATISTIK -->
+    <!-- <section id="statistik" class="section">
       <div class="container">
         <div class="stats-header">
           <h2>Statistik Keparakan Lor</h2>
@@ -185,16 +213,20 @@
 
         <div class="stats-cards--2col">
           <div id="statistik-kemiskinan" class="stat-card">
-            <div class="stat-icon bg-orange"><i class="fas fa-chart-line"></i></div>
+            <div class="stat-icon bg-orange">
+              <i class="fas fa-chart-line"></i>
+            </div>
             <div class="stat-title">Tingkat Kemiskinan</div>
             <div class="stat-desc">
-              <span class="kemiskinan-data">12% warga</span> berada pada kategori
-              pra-sejahtera / rentan miskin.
+              <span class="kemiskinan-data">12% warga</span> berada pada
+              kategori pra-sejahtera / rentan miskin.
             </div>
           </div>
 
           <div id="statistik-kesehatan" class="stat-card">
-            <div class="stat-icon bg-blue"><i class="fas fa-hospital-user"></i></div>
+            <div class="stat-icon bg-blue">
+              <i class="fas fa-hospital-user"></i>
+            </div>
             <div class="stat-title">Kesehatan Masyarakat</div>
             <div class="stat-desc">
               Cakupan posyandu, imunisasi dasar, dan pemantauan kesehatan
@@ -203,13 +235,16 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
+    <!-- AGENDA -->
     <section id="agenda" class="section">
       <div class="container">
         <div class="section-header-row">
           <h2>Agenda</h2>
-          <a href="#" class="more-link">Semua Agenda <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="more-link"
+            >Semua Agenda <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
 
         <div class="slider-wrapper">
@@ -221,11 +256,13 @@
               <div class="agenda-body">
                 <h3 class="agenda-title">Musyawarah Warga RW 01</h3>
                 <div class="agenda-meta">
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i
+                  ></span>
                   <span>12 Nov 2025</span>
                 </div>
                 <p class="news-desc">
-                  Pembahasan penataan UMKM kuliner & branding kampung
+                  Pembahasan penataan UMKM kuliner &amp; branding kampung
                   tematik.
                 </p>
               </div>
@@ -238,7 +275,9 @@
               <div class="agenda-body">
                 <h3 class="agenda-title">Kerja Bakti Kebersihan</h3>
                 <div class="agenda-meta">
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i
+                  ></span>
                   <span>16 Nov 2025</span>
                 </div>
                 <p class="news-desc">
@@ -255,7 +294,47 @@
               <div class="agenda-body">
                 <h3 class="agenda-title">Pelatihan Kewirausahaan UMKM</h3>
                 <div class="agenda-meta">
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i
+                  ></span>
+                  <span>20 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Peningkatan kapasitas pelaku usaha lokal (branding,
+                  pengemasan, pemasaran digital).
+                </p>
+              </div>
+            </article>
+
+            <article class="agenda-card">
+              <div class="agenda-img">
+                <img src="img/agenda3.jpg" alt="Pelatihan Kewirausahaan UMKM" />
+              </div>
+              <div class="agenda-body">
+                <h3 class="agenda-title">Pelatihan Kewirausahaan UMKM</h3>
+                <div class="agenda-meta">
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i
+                  ></span>
+                  <span>20 Nov 2025</span>
+                </div>
+                <p class="news-desc">
+                  Peningkatan kapasitas pelaku usaha lokal (branding,
+                  pengemasan, pemasaran digital).
+                </p>
+              </div>
+            </article>
+
+            <article class="agenda-card">
+              <div class="agenda-img">
+                <img src="img/agenda3.jpg" alt="Pelatihan Kewirausahaan UMKM" />
+              </div>
+              <div class="agenda-body">
+                <h3 class="agenda-title">Pelatihan Kewirausahaan UMKM</h3>
+                <div class="agenda-meta">
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i
+                  ></span>
                   <span>20 Nov 2025</span>
                 </div>
                 <p class="news-desc">
@@ -275,11 +354,14 @@
       </div>
     </section>
 
+    <!-- BERITA -->
     <section id="berita" class="section">
       <div class="container">
         <div class="section-header-row">
           <h2>Berita</h2>
-          <a href="#" class="more-link">Semua Berita <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="more-link"
+            >Semua Berita <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
 
         <div class="news-grid-wrapper">
@@ -292,8 +374,11 @@
               <div class="news-body">
                 <h3 class="news-title">Launching Kampung Kuliner Pagoda</h3>
                 <div class="news-meta">
-                  <span class="meta-icon"><i class="fas fa-user"></i></span><span>Admin</span>
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span><span>10 Nov 2025</span>
+                  <span class="meta-icon"><i class="fas fa-user"></i></span
+                  ><span>Admin</span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i></span
+                  ><span>10 Nov 2025</span>
                 </div>
                 <p class="news-desc">
                   Keparakan Lor mengembangkan potensi kuliner lokal sebagai daya
@@ -312,8 +397,11 @@
                   Pelayanan Surat Online Mulai Diterapkan
                 </h3>
                 <div class="news-meta">
-                  <span class="meta-icon"><i class="fas fa-user"></i></span><span>Admin 2</span>
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span><span>05 Nov 2025</span>
+                  <span class="meta-icon"><i class="fas fa-user"></i></span
+                  ><span>Admin 2</span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i></span
+                  ><span>05 Nov 2025</span>
                 </div>
                 <p class="news-desc">
                   Warga kini dapat mengajukan surat domisili, usaha kecil, dan
@@ -329,11 +417,14 @@
               ></div>
               <div class="news-body">
                 <h3 class="news-title">
-                  Kegiatan Posyandu & Edukasi Kesehatan
+                  Kegiatan Posyandu &amp; Edukasi Kesehatan
                 </h3>
                 <div class="news-meta">
-                  <span class="meta-icon"><i class="fas fa-user"></i></span><span>Admin 3</span>
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span><span>01 Nov 2025</span>
+                  <span class="meta-icon"><i class="fas fa-user"></i></span
+                  ><span>Admin 3</span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i></span
+                  ><span>01 Nov 2025</span>
                 </div>
                 <p class="news-desc">
                   Pemeriksaan kesehatan ibu-anak dan sosialisasi pencegahan DBD.
@@ -349,8 +440,11 @@
               <div class="news-body">
                 <h3 class="news-title">Program Bank Sampah Warga</h3>
                 <div class="news-meta">
-                  <span class="meta-icon"><i class="fas fa-user"></i></span><span>Admin 4</span>
-                  <span class="meta-icon"><i class="far fa-calendar-alt"></i></span><span>28 Okt 2025</span>
+                  <span class="meta-icon"><i class="fas fa-user"></i></span
+                  ><span>Admin 4</span>
+                  <span class="meta-icon"
+                    ><i class="far fa-calendar-alt"></i></span
+                  ><span>28 Okt 2025</span>
                 </div>
                 <p class="news-desc">
                   Pemilahan sampah rumah tangga untuk nilai ekonomi dan
@@ -370,23 +464,29 @@
       </div>
     </section>
 
+    <!-- URBAN FARMING -->
     <section id="urban" class="section urban-section">
       <div class="container">
         <div class="section-header-row">
           <h2>Urban Farming</h2>
-          <a href="#" class="more-link">Lihat Selengkapnya <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="more-link"
+            >Lihat Selengkapnya <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
 
+        <!-- GRID 2 kolom: kiri = deskripsi + foto, kanan = peta -->
         <div class="urban-grid">
+          <!-- KOLOM KIRI -->
           <div class="urban-left">
+            <!-- deskripsi -->
             <div class="urban-about-card">
               <h3 class="urban-title">Program Pertanian Kampung</h3>
               <p class="urban-desc">
                 Urban Farming Keparakan Lor adalah gerakan warga untuk
                 memanfaatkan lahan sempit (pekarangan, lorong gang, rooftop)
                 menjadi kebun sayur, toga (tanaman obat keluarga), dan tanaman
-                produktif lain. Tujuan utamanya: **kemandirian pangan keluarga**,
-                edukasi generasi muda, dan **lingkungan yang lebih hijau**.
+                produktif lain. Tujuannya adalah kemandirian pangan keluarga,
+                edukasi generasi muda, dan lingkungan yang lebih hijau.
               </p>
               <p class="urban-desc">
                 Kegiatan ini dikelola gotong royong oleh warga, ibu-ibu PKK,
@@ -395,10 +495,9 @@
                 sebagai dukungan ekonomi warga.
               </p>
             </div>
-          </div>
 
-          <div class="urban-right">
-            <div class="urban-photo-grid">
+            <!-- FOTO-FOTO DIPINDAH KE BAWAH DESKRIPSI -->
+            <!-- <div class="urban-photo-grid">
               <div class="urban-photo-item">
                 <img src="img/urban1.jpg" alt="Urban Farming 1" />
               </div>
@@ -411,8 +510,11 @@
               <div class="urban-photo-item">
                 <img src="img/urban4.jpg" alt="Urban Farming 4" />
               </div>
-            </div>
+            </div> -->
+          </div>
 
+          <!-- KOLOM KANAN: cuma peta -->
+          <div class="urban-right">
             <div class="urban-map-card">
               <h4 class="urban-subtitle">Lokasi Kebun / Demo Plot</h4>
               <div class="urban-map-frame">
@@ -431,11 +533,14 @@
       </div>
     </section>
 
+    <!-- GALERI -->
     <section id="galeri" class="section">
       <div class="container">
         <div class="section-header-row">
           <h2>Foto</h2>
-          <a href="#" class="more-link">Semua Foto <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="more-link"
+            >Semua Foto <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
 
         <div class="gallery-grid">
@@ -461,11 +566,14 @@
       </div>
     </section>
 
+    <!-- VIDEO -->
     <section id="video" class="section">
       <div class="container">
         <div class="section-header-row">
           <h2>Video</h2>
-          <a href="#" class="more-link">Semua Video <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="more-link"
+            >Semua Video <i class="fas fa-arrow-right"></i
+          ></a>
         </div>
 
         <div class="video-grid">
@@ -487,13 +595,14 @@
       </div>
     </section>
 
+    <!-- FOOTER -->
     <footer class="footer" id="lapak">
       <div class="container footer-grid">
         <div>
           <div class="footer-title">Tentang Web</div>
           <div class="footer-logo">
             <img
-              src="img/logo-keparakanlor.png"
+              src="img/logo-pemerintah-keparakanlor.png"
               alt="Logo Keparakan Lor"
             />
           </div>
@@ -542,6 +651,7 @@
       </div>
     </footer>
 
+    <!-- SCROLL TOP -->
     <div class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
       <i class="fas fa-arrow-up"></i>
     </div>
