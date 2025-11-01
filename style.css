@@ -563,6 +563,26 @@ body.dark .slider-dots .dot {
   }
 }
 
+/* ===== FIX: Posisikan "Home" tepat di tengah pada menu mobile ===== */
+@media (max-width: 991px) {
+  /* hanya anchor langsung di dalam wrapper (contoh: Home) */
+  .nav-links-wrapper > a.nav-link {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center; /* tengah secara horizontal */
+    text-align: center; /* jaga teks tetap center */
+    padding: 12px 1rem;
+    border-bottom: 1px solid var(--border-card);
+  }
+
+  /* header dropdown (Profil/Informasi/Media) tetap punya caret & layout sendiri */
+  .nav-links-wrapper > .dropdown > .nav-link {
+    justify-content: space-between; /* biar caret di kanan */
+    text-align: left; /* sesuai desain dropdown */
+  }
+}
+
 /* ============ HERO ============ */
 .hero {
   position: relative;
