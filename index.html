@@ -621,3 +621,166 @@
     <script src="main.js"></script>
   </body>
 </html>
+
+<script>
+  /**
+   * initCarousel — bikin track bisa di-swipe/drag, paging dengan dots, dan (opsional) panah.
+   * @param {Object} cfg
+   *  trackSel   : selector elemen track (wajib)
+   *  dotsSel    : selector container dots (wajib)
+   *  prevSel    : selector tombol prev (opsional)
+   *  nextSel    : selector tombol next (opsional)
+   *  gap        : jarak antar kartu (px) — default 16
+   *  breakpoints: atur jumlah kartu per tampilan: [{min:1100, per:3},{min:720, per:2},{min:0,per:1}]
+   */
+  function initCarousel(cfg) {
+    const track = document.querySelector(cfg.trackSel);
+    const dotsWrap = document.querySelector(cfg.dotsSel);
+    if (!track || !dotsWrap) return;
+
+    const prev = cfg.prevSel ? document.querySelector(cfg.prevSel) : null;
+    const next = cfg.nextSel ? document.querySelector(cfg.nextSel) : null;
+
+    const GAP = cfg.gap ?? 16; // harus cocok dengan CSS gap:1rem
+    const bps = cfg.breakpoints ?? [
+      { min: 1100, per: 3 },
+      { min: 720, per: 2 },
+      { min: 0, per: 1 },
+    ];
+
+    let cards = Array.from(track.children);
+    let perView = 1,
+      page = 0,
+      pages = 1;
+    let startX = 0,
+      curX = 0,
+      dragging = false,
+      startTx = 0;
+
+    function computePerView() {
+      const w = track.parentElement.clientWidth;
+      for (const bp of bps) {
+        if (w >= bp.min) {
+          return bp.per;
+        }
+      }
+      return 1;
+    }
+
+    function buildDots() {
+      dotsWrap.innerHTML = "";
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement("div");
+        d.className = "dot" + (i === page ? " active" : "");
+        d.dataset.slide = i;
+        d.addEventListener("click", () => goTo(i));
+        dotsWrap.appendChild(d);
+      }
+    }
+
+    function updateButtons() {
+      if (prev) prev.disabled = page <= 0;
+      if (next) next.disabled = page >= pages - 1;
+    }
+
+    function goTo(i) {
+      page = Math.max(0, Math.min(pages - 1, i));
+      const cardW = cards[0].getBoundingClientRect().width;
+      const offset = (page * (cardW * perView + GAP * perView)) / perView;
+      track.style.transform = `translateX(${-offset}px)`;
+      Array.from(dotsWrap.children).forEach((d, idx) =>
+        d.classList.toggle("active", idx === page)
+      );
+      updateButtons();
+    }
+
+    function recalc() {
+      // refresh cards (kalau ada perubahan DOM)
+      cards = Array.from(track.children);
+      perView = computePerView();
+      pages = Math.max(1, Math.ceil(cards.length / perView));
+      page = Math.min(page, pages - 1);
+      buildDots();
+      goTo(page);
+    }
+
+    // Drag & Swipe
+    function onDown(e) {
+      dragging = true;
+      startX = e.touches ? e.touches[0].clientX : e.clientX;
+      const m = /translateX\(([-0-9.]+)px\)/.exec(track.style.transform || "");
+      startTx = m ? parseFloat(m[1]) : 0;
+      track.style.transition = "none";
+    }
+    function onMove(e) {
+      if (!dragging) return;
+      curX = e.touches ? e.touches[0].clientX : e.clientX;
+      const dx = curX - startX;
+      track.style.transform = `translateX(${startTx + dx}px)`;
+    }
+    function onUp() {
+      if (!dragging) return;
+      dragging = false;
+      track.style.transition = "";
+      const dx = curX - startX;
+      const threshold = 50;
+      if (dx < -threshold && page < pages - 1) page++;
+      else if (dx > threshold && page > 0) page--;
+      goTo(page);
+    }
+
+    // Events
+    window.addEventListener("resize", recalc);
+    window.addEventListener("orientationchange", recalc);
+    track.addEventListener("mousedown", onDown);
+    window.addEventListener("mousemove", onMove);
+    window.addEventListener("mouseup", onUp);
+    track.addEventListener("touchstart", onDown, { passive: true });
+    track.addEventListener("touchmove", onMove, { passive: true });
+    track.addEventListener("touchend", onUp);
+
+    if (prev) prev.addEventListener("click", () => goTo(page - 1));
+    if (next) next.addEventListener("click", () => goTo(page + 1));
+
+    // Keyboard (jika parent fokus)
+    track.parentElement.setAttribute("tabindex", "0");
+    track.parentElement.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") goTo(page + 1);
+      if (e.key === "ArrowLeft") goTo(page - 1);
+    });
+
+    // Init
+    recalc();
+  }
+
+  /* ==== Panggil untuk AGENDA & BERITA ==== */
+  document.addEventListener("DOMContentLoaded", function () {
+    // AGENDA
+    initCarousel({
+      trackSel: "#agendaTrack",
+      dotsSel: "#agendaDots",
+      prevSel: "#agendaPrev", // hapus baris ini jika tidak pakai panah
+      nextSel: "#agendaNext", // hapus baris ini jika tidak pakai panah
+      gap: 16,
+      breakpoints: [
+        { min: 1100, per: 3 },
+        { min: 720, per: 2 },
+        { min: 0, per: 1 },
+      ],
+    });
+
+    // BERITA
+    initCarousel({
+      trackSel: "#newsTrack",
+      dotsSel: "#newsDots",
+      prevSel: "#newsPrev", // hapus jika tidak pakai panah
+      nextSel: "#newsNext", // hapus jika tidak pakai panah
+      gap: 16,
+      breakpoints: [
+        { min: 1100, per: 3 },
+        { min: 720, per: 2 },
+        { min: 0, per: 1 },
+      ],
+    });
+  });
+</script>

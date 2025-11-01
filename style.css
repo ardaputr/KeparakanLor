@@ -434,6 +434,77 @@ CONTENT CARD */
   line-height: 1;
 }
 
+/* ====== Slider generic ====== */
+.slider-wrapper,
+.news-grid-wrapper {
+  position: relative;
+}
+
+.slider-track,
+.news-track {
+  display: flex;
+  gap: 1rem; /* jarak antar kartu */
+  will-change: transform;
+  transition: transform 0.35s ease;
+  user-select: none;
+  cursor: grab;
+  touch-action: pan-y; /* biar bisa swipe vertikal halaman tanpa konflik */
+}
+
+.slider-track:active,
+.news-track:active {
+  cursor: grabbing;
+}
+
+/* “viewport” tersembunyi: parent pembungkus track */
+.slider-wrapper,
+.news-grid-wrapper {
+  overflow: hidden;
+  padding-bottom: 0.25rem;
+}
+
+/* Dots & arrows (opsional) */
+.slider-dots {
+  display: flex;
+  gap: 0.4rem;
+  justify-content: center;
+  margin-top: 0.75rem;
+}
+.slider-dots .dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  border: 1px solid var(--border-card);
+  background: #cbd5e1;
+  cursor: pointer;
+}
+body.dark .slider-dots .dot {
+  background: #475569;
+}
+.slider-dots .dot.active {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+}
+
+.slider-arrows {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+.slider-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  border-radius: 0.6rem;
+  padding: 0.45rem 0.65rem;
+  cursor: pointer;
+  color: var(--text-main);
+  box-shadow: var(--shadow-card);
+}
+.slider-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ===================================================== */
 /* RESPONSIVE DESIGN (MOBILE) */
 /* ===================================================== */
