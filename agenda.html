@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semua Agenda | Keparakan Lor</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <meta name="theme-color" content="#0d6efd" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-inner container">
+        <div class="top-left">
+          <div>
+            <span class="meta-icon"><i class="fas fa-phone"></i></span>
+            0812-3456-7890
+          </div>
+          <div>|</div>
+          <div>
+            <span class="meta-icon"><i class="fas fa-envelope"></i></span>
+            kelurahan.keparakanlor@example.go.id
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="socials">
+            <a href="#" aria-label="facebook" title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="twitter" title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" aria-label="youtube" title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a href="#" aria-label="instagram" title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner container">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="img/logo-pemerintah-keparakanlor.png" alt="Logo" />
+          </div>
+          <div class="brand-title">
+            <span class="main">Keparakan Lor</span>
+            <span class="sub">Kemantren Mergangsan · Kota Yogyakarta</span>
+          </div>
+        </div>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links-wrapper" id="navLinks">
+          <a class="nav-link active" href="index.html">Home</a>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Profil
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="profil.html#profil-gambaranumum"
+                >Gambaran Umum</a
+              >
+              <a class="dropdown-item" href="profil.html#profil-lokasi"
+                >Lokasi</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Informasi
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="index.html#agenda">Agenda</a>
+              <a class="dropdown-item" href="index.html#berita">Berita</a>
+              <a class="dropdown-item" href="informasi.html#urban"
+                >Urban Farming</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Media
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="media.html">Foto</a>
+              <a class="dropdown-item" href="media.html#video">Video</a>
+            </div>
+          </div>
+
+          <div class="dark-toggle" id="darkToggle" title="Toggle Dark Mode">
+            <div class="toggle-ball" id="toggleBall">🌙</div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO MINI -->
+      <section class="section" style="padding-bottom: 1.25rem">
+        <div class="container">
+          <h1 class="page-title">Semua Agenda</h1>
+          <p class="text-dim" style="margin-top: -0.5rem">
+            Daftar lengkap kegiatan di Kampung Keparakan Lor.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEARCH + GRID + PAGINATION -->
+      <section class="section" style="padding-top: 0">
+        <div class="container">
+          <!-- Search -->
+          <div class="content-card" style="padding: 1rem; margin-bottom: 1rem">
+            <label for="searchInput" class="label-sm">Cari agenda</label>
+            <input
+              id="searchInput"
+              type="search"
+              placeholder="Cari judul, lokasi, keterangan…"
+              class="input"
+            />
+          </div>
+
+          <!-- Grid -->
+          <div id="agendaGrid" class="agenda-grid"></div>
+
+          <!-- Empty -->
+          <div
+            id="emptyState"
+            class="text-dim"
+            style="display: none; text-align: center; margin-top: 1rem"
+          >
+            Tidak ada agenda yang cocok dengan pencarian.
+          </div>
+
+          <!-- Pagination controls -->
+          <div id="pager" class="pager" style="display: none">
+            <button
+              id="btnPrev"
+              class="pager-btn"
+              aria-label="Halaman sebelumnya"
+            >
+              <i class="fas fa-chevron-left"></i> Sebelumnya
+            </button>
+
+            <div
+              id="pagerDots"
+              class="pager-dots"
+              aria-label="Navigasi halaman"
+            ></div>
+
+            <button
+              id="btnNext"
+              class="pager-btn"
+              aria-label="Halaman berikutnya"
+            >
+              Berikutnya <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-title">Tentang Web</div>
+          <div class="footer-logo">
+            <img
+              src="img/logo-pemerintah-keparakanlor.png"
+              alt="Logo Keparakan Lor"
+            />
+          </div>
+          <p>
+            Website resmi Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
+            Media informasi publik dan transparansi pemerintah
+            kelurahan/kampung.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Kontak</div>
+          <p>
+            📍 Jl. .........., Keparakan Lor,<br />Mergangsan, Yogyakarta, 55153
+          </p>
+          <p>📞 0812-3456-7890</p>
+          <p>✉️ admin@keparakanlor.go.id</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Kontak Penting</div>
+          <p>Puskesmas - (0274) 000000</p>
+          <p>Polsek - (0274) 000001</p>
+          <p>Damkar - (0274) 000002</p>
+          <p>PLN - 123</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Layanan Warga</div>
+          <a href="#">Sistem Informasi Kelurahan</a>
+          <a href="#">Pengaduan Online</a>
+          <a href="#">Pengajuan Surat</a>
+          <a href="#">Info Kesehatan</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <div>Copyright © Keparakan Lor · All rights reserved</div>
+        <div class="footer-soc">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCROLL TOP -->
+    <div class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JS UTAMA (dark mode & hamburger) -->
+    <script src="main.js"></script>
+
+    <!-- JS KHUSUS AGENDA (data, render grid 3x3, search, pagination) -->
+    <script>
+      // ====== DATA AGENDA (boleh tambah sebanyaknya) ======
+      const AGENDA_DATA = [
+        {
+          title: "Musyawarah Warga RW 01",
+          date: "2025-11-12",
+          time: "19:30 WIB",
+          place: "Balai RW 01",
+          img: "img/agenda1.jpg",
+          desc: "Pembahasan penataan UMKM kuliner & branding kampung tematik.",
+        },
+        {
+          title: "Kerja Bakti Kebersihan",
+          date: "2025-11-16",
+          time: "07:00 WIB",
+          place: "Area Kampung Keparakan Lor",
+          img: "img/agenda2.jpg",
+          desc: "Aksi bersih lingkungan dan pemilahan sampah menuju kampung hijau.",
+        },
+        {
+          title: "Pelatihan Kewirausahaan UMKM",
+          date: "2025-11-20",
+          time: "09:00 WIB",
+          place: "Aula Kelurahan",
+          img: "img/agenda3.jpg",
+          desc: "Branding, pengemasan, dan pemasaran digital untuk UMKM.",
+        },
+        {
+          title: "Posyandu Balita Rutin",
+          date: "2025-10-28",
+          time: "08:00 WIB",
+          place: "Posyandu Anggrek",
+          img: "img/agenda4.jpg",
+          desc: "Penimbangan balita, imunisasi dasar, dan penyuluhan gizi.",
+        },
+        {
+          title: "Sosialisasi Bank Sampah RW 09",
+          date: "2025-12-03",
+          time: "15:30 WIB",
+          place: "Balai RW 09",
+          img: "img/agenda5.jpg",
+          desc: "Skema setor-tarik dan pelaporan Bank Sampah.",
+        },
+        {
+          title: "Kenduri Suro",
+          date: "2025-10-02",
+          time: "19:00 WIB",
+          place: "Lapangan Kampung",
+          img: "img/agenda6.jpg",
+          desc: "Seremoni budaya tahunan sebagai ungkapan syukur warga.",
+        },
+        {
+          title: "Pelatihan APAR & Tanggap Awal Kebakaran",
+          date: "2025-12-12",
+          time: "13:00 WIB",
+          place: "Halaman Kelurahan",
+          img: "img/agenda7.jpg",
+          desc: "Simulasi APAR dan penanggulangan kebakaran awal.",
+        },
+        {
+          title: "Pertemuan Rutin PKK",
+          date: "2025-11-25",
+          time: "16:00 WIB",
+          place: "Balai RW 08",
+          img: "img/agenda8.jpg",
+          desc: "Evaluasi program gizi keluarga dan ekonomi kreatif.",
+        },
+        {
+          title: "Jum’at Bersih",
+          date: "2025-11-14",
+          time: "06:30 WIB",
+          place: "Sepanjang Gang Utama",
+          img: "img/agenda9.jpg",
+          desc: "Fokus drainase & kebersihan saluran.",
+        },
+
+        // Tambahan dummy untuk menunjukkan paging
+        {
+          title: "Pelatihan Budidaya Sayur",
+          date: "2025-12-05",
+          time: "08:00 WIB",
+          place: "Green House Kampung",
+          img: "img/agenda3.jpg",
+          desc: "Pengenalan hidroponik pemula.",
+        },
+        {
+          title: "Senam Pagi Lansia",
+          date: "2025-11-10",
+          time: "06:30 WIB",
+          place: "Balai RW 10",
+          img: "img/agenda2.jpg",
+          desc: "Senam rutin untuk kebugaran lansia.",
+        },
+        {
+          title: "Lomba Kebersihan RT",
+          date: "2025-12-22",
+          time: "07:00 WIB",
+          place: "Seluruh RT",
+          img: "img/agenda1.jpg",
+          desc: "Penilaian lingkungan & partisipasi warga.",
+        },
+      ];
+
+      const gridEl = document.getElementById("agendaGrid");
+      const emptyEl = document.getElementById("emptyState");
+      const searchEl = document.getElementById("searchInput");
+
+      const pagerEl = document.getElementById("pager");
+      const pagerDotsEl = document.getElementById("pagerDots");
+      const btnPrev = document.getElementById("btnPrev");
+      const btnNext = document.getElementById("btnNext");
+
+      const ITEMS_PER_PAGE = 9; // 3 x 3
+      let filtered = [...AGENDA_DATA];
+      let currentPage = 1;
+      let totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+
+      function formatDate(iso) {
+        try {
+          const opts = { day: "2-digit", month: "short", year: "numeric" };
+          return new Date(iso + "T00:00:00").toLocaleDateString("id-ID", opts);
+        } catch (e) {
+          return iso;
+        }
+      }
+
+      function renderGridPage(items, page) {
+        const start = (page - 1) * ITEMS_PER_PAGE;
+        const view = items.slice(start, start + ITEMS_PER_PAGE);
+
+        if (!view.length) {
+          gridEl.innerHTML = "";
+          emptyEl.style.display = "block";
+        } else {
+          emptyEl.style.display = "none";
+          gridEl.innerHTML = view
+            .map(
+              (it) => `
+            <article class="agenda-card-v">
+              <div class="agenda-thumb">
+                <img src="${it.img}" alt="${it.title}" />
+              </div>
+              <div class="agenda-content">
+                <h3 class="agenda-title">${it.title}</h3>
+                <div class="agenda-mini">
+                  <span><i class="far fa-calendar-alt"></i> ${formatDate(
+                    it.date
+                  )} · ${it.time || ""}</span>
+                  <span><i class="fas fa-location-dot"></i> ${
+                    it.place || "-"
+                  }</span>
+                </div>
+                <p class="agenda-desc">${it.desc || ""}</p>
+              </div>
+            </article>
+          `
+            )
+            .join("");
+        }
+      }
+
+      function renderPager() {
+        totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+        pagerEl.style.display = totalPages > 1 ? "flex" : "none";
+
+        // tombol prev/next
+        btnPrev.disabled = currentPage <= 1;
+        btnNext.disabled = currentPage >= totalPages;
+
+        // dots
+        pagerDotsEl.innerHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+          const dot = document.createElement("button");
+          dot.className = "pager-dot" + (i === currentPage ? " active" : "");
+          dot.setAttribute("aria-label", "Halaman " + i);
+          dot.addEventListener("click", () => {
+            currentPage = i;
+            updateView();
+          });
+          pagerDotsEl.appendChild(dot);
+        }
+      }
+
+      function updateView() {
+        renderGridPage(filtered, currentPage);
+        renderPager();
+        // scroll sedikit ke atas grid biar nyaman saat ganti halaman
+        document
+          .getElementById("agendaGrid")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function applySearch() {
+        const q = (searchEl.value || "").toLowerCase().trim();
+        filtered = AGENDA_DATA.filter((it) => {
+          const hay = (it.title + " " + it.place + " " + it.desc).toLowerCase();
+          return !q || hay.includes(q);
+        });
+        currentPage = 1; // reset ke halaman 1
+        updateView();
+      }
+
+      // Events
+      searchEl.addEventListener("input", applySearch);
+      btnPrev.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+      });
+      btnNext.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Aksesibilitas keyboard: panah kiri/kanan untuk ganti halaman
+      document.addEventListener("keydown", (e) => {
+        if (totalPages <= 1) return;
+        if (e.key === "ArrowLeft") {
+          if (currentPage > 1) {
+            currentPage--;
+            updateView();
+          }
+        }
+        if (e.key === "ArrowRight") {
+          if (currentPage < totalPages) {
+            currentPage++;
+            updateView();
+          }
+        }
+      });
+
+      // Init
+      updateView();
+    </script>
+
+    <!-- STYLE KECIL KHUSUS GRID & PAGINATION -->
+    <style>
+      .page-title {
+        margin: 0 0 0.25rem 0;
+      }
+      .text-dim {
+        color: var(--text-dim);
+      }
+      .content-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        box-shadow: var(--shadow-card);
+      }
+      .label-sm {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        margin-bottom: 0.35rem;
+      }
+      .input {
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        background: var(--bg-card);
+        color: var(--text-main);
+      }
+
+      /* GRID 3 kolom responsif (tetap 9 item per halaman) */
+      .agenda-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      @media (min-width: 720px) {
+        .agenda-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1100px) {
+        .agenda-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Kartu vertikal */
+      .agenda-card-v {
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.15s ease;
+      }
+      .agenda-card-v:hover {
+        transform: translateY(-2px);
+      }
+      .agenda-thumb {
+        position: relative;
+        width: 100%;
+        padding-top: 62%;
+        background: #000;
+      }
+      .agenda-thumb img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      .agenda-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .agenda-title {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--text-main);
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .agenda-mini {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        color: var(--text-dim);
+        font-size: 0.92rem;
+      }
+      .agenda-mini i {
+        width: 1rem;
+        text-align: center;
+        margin-right: 0.35rem;
+      }
+      .agenda-mini span {
+        display: flex;
+        align-items: center;
+      }
+      .agenda-desc {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0.25rem 0 0 0;
+      }
+
+      /* Pager */
+      .pager {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .pager-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        padding: 0.55rem 0.8rem;
+        font-weight: 500;
+        color: var(--text-main);
+        cursor: pointer;
+        box-shadow: var(--shadow-card);
+      }
+      .pager-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .pager-dots {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .pager-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        border: 1px solid var(--border-card);
+        background: #cbd5e1;
+        cursor: pointer;
+      }
+      body.dark .pager-dot {
+        background: #475569;
+      }
+      .pager-dot.active {
+        background: var(--brand-blue);
+        border-color: var(--brand-blue);
+      }
+    </style>
+  </body>
+</html>

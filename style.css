@@ -326,6 +326,114 @@ body.dark .toggle-ball {
   cursor: pointer;
 }
 
+/* 
+CONTENT CARD */
+/* --- Utilitas teks rata kiri-kanan --- */
+.text-justify,
+.text-justify p,
+.text-justify li {
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+/* Satu card profil */
+.content-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+  padding: 1.5rem;
+}
+
+/* Heading di dalam card, beri jarak rapih */
+.content-card h2 {
+  margin-top: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+/* List di dalam card dibuat kompak */
+.content-card ul.tight-list {
+  margin: 0.25rem 0 1rem 1.25rem;
+  padding: 0;
+}
+.content-card ul.tight-list li {
+  margin: 0.25rem 0;
+}
+
+/* ====== MAPS ====== */
+/* ====== MAPS ====== */
+.map-card {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-card);
+  box-shadow: var(--shadow-card);
+  border-radius: var(--radius-card);
+  padding: 1rem;
+}
+@media (min-width: 992px) {
+  .map-card {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.map-info .map-title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 600;
+  color: var(--text-main);
+}
+.map-text {
+  margin: 0;
+  color: var(--text-dim);
+}
+
+/* frame lebih BESAR */
+.map-frame {
+  width: 100%;
+  height: 65vh; /* besar di mobile */
+  min-height: 480px; /* minimum supaya tetap tinggi */
+  border: 1px solid var(--border-card);
+  border-radius: 0.75rem;
+  overflow: hidden;
+  background: #000;
+  box-shadow: var(--shadow-card);
+}
+@media (min-width: 992px) {
+  .map-frame {
+    height: 70vh;
+    min-height: 560px;
+  } /* lebih besar di desktop */
+}
+.map-iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* Tombol "Buka di Google Maps" */
+.btn-map {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.625rem 1rem;
+  border-radius: 0.6rem;
+  background: var(--brand-blue);
+  color: #fff;
+  font-weight: 500;
+  border: 1px solid transparent;
+  box-shadow: 0 8px 18px rgba(13, 110, 253, 0.25);
+  transition: transform 0.08s ease, background 0.15s ease;
+}
+.btn-map:hover {
+  background: var(--brand-blue-light);
+  transform: translateY(-1px);
+}
+.btn-map i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
 /* ===================================================== */
 /* RESPONSIVE DESIGN (MOBILE) */
 /* ===================================================== */

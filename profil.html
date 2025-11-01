@@ -2,7 +2,7 @@
 <html lang="id">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Profil Keparakan Lor | Kemantren Mergangsan</title>
 
     <link rel="stylesheet" href="style.css" />
@@ -12,9 +12,10 @@
     />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
     />
   </head>
+  <!-- ZingChart -->
   <body>
     <!-- TOP BAR -->
     <div class="topbar">
@@ -38,7 +39,7 @@
             <a href="#" aria-label="twitter" title="Twitter"
               ><i class="fab fa-twitter"></i
             ></a>
-            <a href="#" aria-label="youtube" title="Youtube"
+            <a href="#" aria-label="youtube" title="YouTube"
               ><i class="fab fa-youtube"></i
             ></a>
             <a href="#" aria-label="instagram" title="Instagram"
@@ -71,16 +72,20 @@
         </button>
 
         <nav class="nav-links-wrapper" id="navLinks">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link active" href="index.html">Home</a>
 
           <div class="dropdown">
-            <div class="nav-link dropdown-toggle-btn active" tabindex="0">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
               Profil
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="profil.html#profil-sejarah">Sejarah</a>
-              <a class="dropdown-item" href="profil.html#profil-visimisi">Visi & Misi</a>
+              <a class="dropdown-item" href="profil.html#profil-gambaranumum"
+                >Gambaran Umum</a
+              >
+              <a class="dropdown-item" href="profil.html#profil-lokasi"
+                >Lokasi</a
+              >
             </div>
           </div>
 
@@ -91,18 +96,10 @@
             </div>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="index.html#agenda">Agenda</a>
-              <a class="dropdown-item" href="informasi.html#urban">Urban Farming</a>
-            </div>
-          </div>
-
-          <div class="dropdown">
-            <div class="nav-link dropdown-toggle-btn" tabindex="0">
-              Demografis
-              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
-            </div>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="demografis.html#statistik-kemiskinan">Tingkat Kemiskinan</a>
-              <a class="dropdown-item" href="demografis.html#statistik-kesehatan">Kesehatan Masyarakat</a>
+              <a class="dropdown-item" href="index.html#berita">Berita</a>
+              <a class="dropdown-item" href="informasi.html#urban"
+                >Urban Farming</a
+              >
             </div>
           </div>
 
@@ -125,37 +122,138 @@
     </header>
 
     <main>
-    <section id="profil-sejarah" class="section">
+      <section id="profil-gambaranumum" class="section">
         <div class="container">
-            <h1 class="page-title">Profil Keparakan Lor</h1>
-            
-            <div class="content-card">
-                <h2>Sejarah Singkat Kelurahan/Kampung</h2>
-                <p>
-                    Keparakan Lor adalah wilayah yang kaya akan sejarah dan tradisi. Nama 'Keparakan Lor' diyakini berasal dari cerita turun temurun mengenai... [Isi dengan narasi sejarah yang lebih detail].
-                </p>
-                <p>
-                    Sejak terbentuk, wilayah ini terus berkembang menjadi kawasan pemukiman padat yang menjaga nilai-nilai budaya dan gotong royong.
-                </p>
-            </div>
+          <h1 class="page-title">Profil Keparakan Lor</h1>
 
-            <div class="content-card" style="margin-top: 3rem;" id="profil-visimisi">
-                <h2>Visi & Misi</h2>
-                <h3>Visi</h3>
-                <p>
-                    "Terwujudnya Keparakan Lor sebagai Kampung yang Mandiri, Sejahtera, dan Berbudaya melalui Digitalisasi Pelayanan."
-                </p>
-                <h3>Misi</h3>
-                <ul>
-                    <li>Meningkatkan kualitas pelayanan publik berbasis teknologi.</li>
-                    <li>Mendorong partisipasi aktif warga dalam pembangunan sosial dan ekonomi.</li>
-                    <li>Mengembangkan potensi UMKM dan Urban Farming menuju kemandirian ekonomi.</li>
-                    <li>Memperkuat kerukunan dan pelestarian nilai-nilai budaya lokal.</li>
-                </ul>
-            </div>
+          <!-- === SATU CARD SAJA, SEMUA TEKS DIGABUNG & JUSTIFY === -->
+          <article class="content-card text-justify">
+            <h2>Gambaran Umum</h2>
+            <p>
+              Kampung Keparakan Lor berada dalam wilayah Kelurahan Keparakan,
+              Kemantren Mergangsan, Kota Yogyakarta, Daerah Istimewa Yogyakarta.
+              Secara geografis terletak pada posisi
+              <strong>-7.809905820353819° Lintang Selatan</strong> dan
+              <strong>110.37299336301254° Bujur Timur</strong>.
+            </p>
+
+            <h2>Pembagian Administratif</h2>
+            <p>
+              Kampung Keparakan Lor terbagi menjadi empat RW, yaitu RW 07, RW
+              08, RW 09, dan RW 10, dengan rincian sebagai berikut:
+            </p>
+            <ul class="tight-list">
+              <li>
+                <strong>RW 07</strong>: RT 27, RT 28, RT 29, RT 30, RT 31, RT
+                32.
+              </li>
+              <li>
+                <strong>RW 08</strong>: RT 33, RT 34, RT 35, RT 36, RT 37, RT
+                38.
+              </li>
+              <li>
+                <strong>RW 09</strong>: RT 39, RT 40, RT 41, RT 42, RT 43.
+              </li>
+              <li>
+                <strong>RW 10</strong>: RT 44, RT 45, RT 46, RT 47, RT 58.
+              </li>
+            </ul>
+
+            <h2>Kegiatan Sosial &amp; Gotong Royong</h2>
+            <p>
+              Warga aktif dalam berbagai kegiatan di tingkat RT, RW, maupun
+              Kampung. Kerja bakti tidak hanya dilaksanakan menjelang HUT RI,
+              tetapi juga dilakukan saat ada kebutuhan perbaikan lingkungan,
+              misalnya perbaikan saluran air. Partisipasi warga pada umumnya
+              tinggi dan merata.
+            </p>
+            <p>
+              Kegiatan sosial di akar rumput berjalan rutin, seperti arisan,
+              simpan pinjam, dan iuran solidaritas. Iuran solidaritas sosial
+              tingkat RT ditujukan untuk membantu warga yang sakit dan menjalani
+              rawat inap, sedangkan iuran solidaritas <em>pralenan</em> tingkat
+              RW diperuntukkan bagi keluarga yang berduka. Keduanya lazim
+              dibarengi agenda pertemuan warga.
+            </p>
+
+            <h2>Lembaga &amp; Program</h2>
+            <p>
+              Seluruh <strong>Bank Sampah</strong> di tiap RW telah dikukuhkan
+              melalui SK Kelurahan. Sebagian unit melaksanakan kegiatan di RT
+              masing-masing, sementara rekap hasil dikelola pada tingkat RW.
+              Selain itu, program berstatus kelembagaan melalui SK Kelurahan
+              yang berjalan meliputi <strong>Posyandu</strong>,
+              <strong>Kampung Tangguh Bencana (KTB)</strong>, dan
+              <strong>Jagawarga</strong>.
+            </p>
+
+            <h2>Pengelolaan Lingkungan</h2>
+            <p>
+              Pada bidang lingkungan, telah didirikan
+              <strong>Kelompok Tani (KT)</strong> dan
+              <strong
+                >Kelompok Masyarakat Pengawas Perikanan (POKMASWAS) Mina
+                Code</strong
+              >. POKMASWAS Mina Code memiliki status kelembagaan di bawah Dinas
+              Kelautan dan Perikanan Daerah Istimewa Yogyakarta.
+            </p>
+
+            <h2>Seni &amp; Budaya</h2>
+            <p>
+              Pengembangan seni dan budaya tumbuh melalui berbagai kelompok,
+              antara lain
+              <em>Pasinaon Sesorah Basa Jawi Pamapami Ngudi Ilmu</em>,
+              <em>Sanggar Tari Hasta Maheswari</em>,
+              <em>Bregada Wedhung Baswara</em>, dan
+              <em>Kelompok Karawitan Ngudi Laras</em>.
+            </p>
+
+            <h2>Seremoni Budaya Tahunan</h2>
+            <p>
+              Seluruh potensi kampung dipentaskan dalam seremoni budaya tahunan
+              bertajuk <strong>Kenduri Suro</strong>, yang merupakan ungkapan
+              syukur atas keberlangsungan kehidupan di Keparakan Lor. Acara ini
+              diselenggarakan bertepatan dengan tahun baru pada kalender
+              Hijriah/Jawa dan menjadi agenda khas di tingkat Kampung Keparakan
+              Lor.
+            </p>
+          </article>
+          <!-- === /SATU CARD === -->
         </div>
-    </section>
-</main>
+      </section>
+
+      <!-- ===================================================== -->
+      <!-- LOKASI / MAPS -->
+      <!-- ===================================================== -->
+      <section id="profil-lokasi" class="section">
+        <div class="container">
+          <div class="section-header-row">
+            <h2>Lokasi Kampung Keparakan Lor</h2>
+
+            <!-- tombol rapi -->
+            <a
+              class="btn-map"
+              href="https://www.google.com/maps?q=-7.811285003341811,110.36128822531738"
+              target="_blank"
+              rel="noopener"
+            >
+              <i class="fas fa-map-location-dot"></i>
+              <span>Buka di Google Maps</span>
+            </a>
+          </div>
+
+          <div class="map-frame">
+            <iframe
+              class="map-iframe"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15811.188631337829!2d110.36128822531738!3d-7.811285003341811!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a579950a7eca7%3A0xecee2ecafcf61019!2sKeparakan%2C%20Mergangsan%2C%20Yogyakarta%20City%2C%20Special%20Region%20of%20Yogyakarta!5e0!3m2!1sen!2sid!4v1761970926546!5m2!1sen!2sid"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="lapak">
@@ -178,8 +276,7 @@
         <div>
           <div class="footer-title">Kontak</div>
           <p>
-            📍 Jl. .........., Keparakan Lor,<br />
-            Mergangsan, Yogyakarta, 55153
+            📍 Jl. .........., Keparakan Lor,<br />Mergangsan, Yogyakarta, 55153
           </p>
           <p>📞 0812-3456-7890</p>
           <p>✉️ admin@keparakanlor.go.id</p>
@@ -207,7 +304,7 @@
         <div class="footer-soc">
           <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
           <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>

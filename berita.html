@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Semua Berita | Keparakan Lor</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <meta name="theme-color" content="#0d6efd" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-inner container">
+        <div class="top-left">
+          <div>
+            <span class="meta-icon"><i class="fas fa-phone"></i></span>
+            0812-3456-7890
+          </div>
+          <div>|</div>
+          <div>
+            <span class="meta-icon"><i class="fas fa-envelope"></i></span>
+            kelurahan.keparakanlor@example.go.id
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="socials">
+            <a href="#" aria-label="facebook" title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="twitter" title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" aria-label="youtube" title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a href="#" aria-label="instagram" title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner container">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="img/logo-pemerintah-keparakanlor.png" alt="Logo" />
+          </div>
+          <div class="brand-title">
+            <span class="main">Keparakan Lor</span>
+            <span class="sub">Kemantren Mergangsan · Kota Yogyakarta</span>
+          </div>
+        </div>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links-wrapper" id="navLinks">
+          <a class="nav-link active" href="index.html">Home</a>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Profil
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="profil.html#profil-gambaranumum"
+                >Gambaran Umum</a
+              >
+              <a class="dropdown-item" href="profil.html#profil-lokasi"
+                >Lokasi</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Informasi
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="index.html#agenda">Agenda</a>
+              <a class="dropdown-item" href="index.html#berita">Berita</a>
+              <a class="dropdown-item" href="informasi.html#urban"
+                >Urban Farming</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Media
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="media.html">Foto</a>
+              <a class="dropdown-item" href="media.html#video">Video</a>
+            </div>
+          </div>
+
+          <div class="dark-toggle" id="darkToggle" title="Toggle Dark Mode">
+            <div class="toggle-ball" id="toggleBall">🌙</div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO MINI -->
+      <section class="section" style="padding-bottom: 1.25rem">
+        <div class="container">
+          <h1 class="page-title">Semua Berita</h1>
+          <p class="text-dim" style="margin-top: -0.5rem">
+            Kumpulan kabar & rilis kegiatan terbaru Keparakan Lor.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEARCH + GRID + PAGINATION -->
+      <section class="section" style="padding-top: 0">
+        <div class="container">
+          <!-- Search -->
+          <div class="content-card" style="padding: 1rem; margin-bottom: 1rem">
+            <label for="searchNews" class="label-sm">Cari berita</label>
+            <input
+              id="searchNews"
+              type="search"
+              placeholder="Cari judul, ringkas berita…"
+              class="input"
+            />
+          </div>
+
+          <!-- Grid -->
+          <div id="newsGrid" class="news-grid"></div>
+
+          <!-- Empty -->
+          <div
+            id="emptyNews"
+            class="text-dim"
+            style="display: none; text-align: center; margin-top: 1rem"
+          >
+            Tidak ada berita yang cocok dengan pencarian.
+          </div>
+
+          <!-- Pagination -->
+          <div id="newsPager" class="pager" style="display: none">
+            <button
+              id="newsPrev"
+              class="pager-btn"
+              aria-label="Halaman sebelumnya"
+            >
+              <i class="fas fa-chevron-left"></i> Sebelumnya
+            </button>
+
+            <div
+              id="newsDots"
+              class="pager-dots"
+              aria-label="Navigasi halaman"
+            ></div>
+
+            <button
+              id="newsNext"
+              class="pager-btn"
+              aria-label="Halaman berikutnya"
+            >
+              Berikutnya <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-title">Tentang Web</div>
+          <div class="footer-logo">
+            <img
+              src="img/logo-pemerintah-keparakanlor.png"
+              alt="Logo Keparakan Lor"
+            />
+          </div>
+          <p>
+            Website resmi Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
+            Media informasi publik dan transparansi pemerintah
+            kelurahan/kampung.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Kontak</div>
+          <p>
+            📍 Jl. .........., Keparakan Lor,<br />Mergangsan, Yogyakarta, 55153
+          </p>
+          <p>📞 0812-3456-7890</p>
+          <p>✉️ admin@keparakanlor.go.id</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Kontak Penting</div>
+          <p>Puskesmas - (0274) 000000</p>
+          <p>Polsek - (0274) 000001</p>
+          <p>Damkar - (0274) 000002</p>
+          <p>PLN - 123</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Layanan Warga</div>
+          <a href="#">Sistem Informasi Kelurahan</a>
+          <a href="#">Pengaduan Online</a>
+          <a href="#">Pengajuan Surat</a>
+          <a href="#">Info Kesehatan</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <div>Copyright © Keparakan Lor · All rights reserved</div>
+        <div class="footer-soc">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCROLL TOP -->
+    <div class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JS UTAMA -->
+    <script src="main.js"></script>
+
+    <!-- JS KHUSUS BERITA (data, render grid 3x3, search, pagination) -->
+    <script>
+      // ====== DATA BERITA (statis; silakan tambah) ======
+      const NEWS_DATA = [
+        {
+          title: "Launching Kampung Kuliner Pagoda",
+          date: "2025-11-10",
+          author: "Admin",
+          img: "img/berita1.webp",
+          desc: "Keparakan Lor mengembangkan potensi kuliner lokal sebagai daya tarik ekonomi kreatif...",
+        },
+        {
+          title: "Pelayanan Surat Online Mulai Diterapkan",
+          date: "2025-11-05",
+          author: "Admin 2",
+          img: "img/berita2.jpg",
+          desc: "Warga kini dapat mengajukan surat domisili, usaha kecil, dan pengantar RT/RW secara online...",
+        },
+        {
+          title: "Kegiatan Posyandu & Edukasi Kesehatan",
+          date: "2025-11-01",
+          author: "Admin 3",
+          img: "img/berita3.jpg",
+          desc: "Pemeriksaan kesehatan ibu-anak dan sosialisasi pencegahan DBD.",
+        },
+        {
+          title: "Program Bank Sampah Warga",
+          date: "2025-10-28",
+          author: "Admin 4",
+          img: "img/berita4.jpg",
+          desc: "Pemilahan sampah rumah tangga untuk nilai ekonomi dan lingkungan bersih...",
+        },
+        // Tambahan contoh agar paging aktif
+        {
+          title: "Pelatihan Branding UMKM",
+          date: "2025-11-18",
+          author: "Redaksi",
+          img: "img/berita2.jpg",
+          desc: "Pengenalan teknik branding visual dan kanal pemasaran digital bagi pelaku UMKM.",
+        },
+        {
+          title: "Kerja Sama Kampus & Kampung",
+          date: "2025-11-22",
+          author: "Humas",
+          img: "img/berita1.jpg",
+          desc: "Kolaborasi riset dan pengabdian masyarakat untuk peningkatan layanan publik.",
+        },
+        {
+          title: "Revitalisasi Taman Bermain",
+          date: "2025-12-01",
+          author: "Admin",
+          img: "img/berita3.jpg",
+          desc: "Perbaikan fasilitas bermain anak dan penanaman pohon peneduh.",
+        },
+        {
+          title: "Lomba Kebersihan Antarrukun",
+          date: "2025-12-08",
+          author: "Admin 2",
+          img: "img/berita4.jpg",
+          desc: "Penguatan budaya bersih melalui kompetisi kebersihan lingkungan.",
+        },
+        {
+          title: "Sosialisasi Keselamatan Kebakaran",
+          date: "2025-12-15",
+          author: "BPBD Mitra",
+          img: "img/berita1.jpg",
+          desc: "Simulasi penggunaan APAR dan rencana evakuasi darurat.",
+        },
+        {
+          title: "Bazar UMKM & Produk Lokal",
+          date: "2025-12-20",
+          author: "Admin",
+          img: "img/berita2.jpg",
+          desc: "Promosi produk unggulan warga untuk penguatan ekonomi kampung.",
+        },
+        {
+          title: "Pembinaan Remaja Sehat",
+          date: "2025-12-26",
+          author: "Admin 3",
+          img: "img/berita3.jpg",
+          desc: "Materi kesehatan reproduksi remaja dan pencegahan pernikahan anak.",
+        },
+        {
+          title: "Peringatan Tahun Baru Jawa",
+          date: "2025-12-29",
+          author: "Redaksi",
+          img: "img/berita4.jpg",
+          desc: "Rangkaian tirakatan dan pertunjukan budaya di lapangan kampung.",
+        },
+      ];
+
+      const ITEMS_PER_PAGE = 9; // 3 x 3
+      let filtered = [...NEWS_DATA];
+      let currentPage = 1;
+      let totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+
+      const grid = document.getElementById("newsGrid");
+      const empty = document.getElementById("emptyNews");
+      const search = document.getElementById("searchNews");
+      const pager = document.getElementById("newsPager");
+      const dots = document.getElementById("newsDots");
+      const btnPrev = document.getElementById("newsPrev");
+      const btnNext = document.getElementById("newsNext");
+
+      function formatDate(iso) {
+        try {
+          const opts = { day: "2-digit", month: "short", year: "numeric" };
+          return new Date(iso + "T00:00:00").toLocaleDateString("id-ID", opts);
+        } catch (e) {
+          return iso;
+        }
+      }
+
+      function renderPage(items, page) {
+        const start = (page - 1) * ITEMS_PER_PAGE;
+        const view = items.slice(start, start + ITEMS_PER_PAGE);
+
+        if (!view.length) {
+          grid.innerHTML = "";
+          empty.style.display = "block";
+          return;
+        }
+
+        empty.style.display = "none";
+        grid.innerHTML = view
+          .map(
+            (it) => `
+            <article class="news-card-v">
+              <div class="news-thumb">
+                <img src="${it.img}" alt="${it.title}" loading="lazy"/>
+              </div>
+              <div class="news-content">
+                <h3 class="news-title">${it.title}</h3>
+                <div class="news-meta-line">
+                  <span><i class="fas fa-user"></i> ${it.author || "-"}</span>
+                  <span><i class="far fa-calendar-alt"></i> ${formatDate(
+                    it.date
+                  )}</span>
+                </div>
+                <p class="news-desc">${it.desc || ""}</p>
+              </div>
+            </article>
+          `
+          )
+          .join("");
+      }
+
+      function renderPager() {
+        totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+        pager.style.display = totalPages > 1 ? "flex" : "none";
+
+        btnPrev.disabled = currentPage <= 1;
+        btnNext.disabled = currentPage >= totalPages;
+
+        dots.innerHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+          const dot = document.createElement("button");
+          dot.className = "pager-dot" + (i === currentPage ? " active" : "");
+          dot.setAttribute("aria-label", "Halaman " + i);
+          dot.addEventListener("click", () => {
+            currentPage = i;
+            updateView();
+          });
+          dots.appendChild(dot);
+        }
+      }
+
+      function updateView() {
+        renderPage(filtered, currentPage);
+        renderPager();
+        document
+          .getElementById("newsGrid")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function applySearch() {
+        const q = (search.value || "").toLowerCase().trim();
+        filtered = NEWS_DATA.filter((it) => {
+          const hay = (
+            it.title +
+            " " +
+            (it.desc || "") +
+            " " +
+            (it.author || "")
+          ).toLowerCase();
+          return !q || hay.includes(q);
+        });
+        currentPage = 1;
+        updateView();
+      }
+
+      // Events
+      search.addEventListener("input", applySearch);
+      btnPrev.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+      });
+      btnNext.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Keyboard accessibility
+      document.addEventListener("keydown", (e) => {
+        if (totalPages <= 1) return;
+        if (e.key === "ArrowLeft" && currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+        if (e.key === "ArrowRight" && currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Init
+      updateView();
+    </script>
+
+    <!-- STYLE KECIL KHUSUS GRID & PAGINATION (mirip agenda, tapi prefix 'news-') -->
+    <style>
+      .page-title {
+        margin: 0 0 0.25rem 0;
+      }
+      .text-dim {
+        color: var(--text-dim);
+      }
+      .content-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        box-shadow: var(--shadow-card);
+      }
+      .label-sm {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        margin-bottom: 0.35rem;
+      }
+      .input {
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        background: var(--bg-card);
+        color: var(--text-main);
+      }
+
+      /* GRID 3 kolom responsif (9 item/hal) */
+      .news-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      @media (min-width: 720px) {
+        .news-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1100px) {
+        .news-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* Kartu berita vertikal */
+      .news-card-v {
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.15s ease;
+      }
+      .news-card-v:hover {
+        transform: translateY(-2px);
+      }
+
+      .news-thumb {
+        position: relative;
+        width: 100%;
+        padding-top: 62%;
+        background: #000;
+      }
+      .news-thumb img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .news-content {
+        padding: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .news-title {
+        margin: 0;
+        font-size: 1.05rem;
+        color: var(--text-main);
+        font-weight: 600;
+        line-height: 1.35;
+      }
+      .news-meta-line {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+        color: var(--text-dim);
+        font-size: 0.92rem;
+      }
+      .news-meta-line i {
+        width: 1rem;
+        text-align: center;
+        margin-right: 0.35rem;
+      }
+      .news-meta-line span {
+        display: flex;
+        align-items: center;
+      }
+      .news-desc {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0.25rem 0 0 0;
+      }
+
+      /* Pager */
+      .pager {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .pager-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        padding: 0.55rem 0.8rem;
+        font-weight: 500;
+        color: var(--text-main);
+        cursor: pointer;
+        box-shadow: var(--shadow-card);
+      }
+      .pager-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .pager-dots {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .pager-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        border: 1px solid var(--border-card);
+        background: #cbd5e1;
+        cursor: pointer;
+      }
+      body.dark .pager-dot {
+        background: #475569;
+      }
+      .pager-dot.active {
+        background: var(--brand-blue);
+        border-color: var(--brand-blue);
+      }
+    </style>
+  </body>
+</html>

@@ -71,7 +71,7 @@
         </button>
 
         <nav class="nav-links-wrapper" id="navLinks">
-          <a class="nav-link" href="index.html">Home</a>
+          <a class="nav-link active" href="index.html">Home</a>
 
           <div class="dropdown">
             <div class="nav-link dropdown-toggle-btn" tabindex="0">
@@ -79,8 +79,12 @@
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="profil.html#profil-sejarah">Sejarah</a>
-              <a class="dropdown-item" href="profil.html#profil-visimisi">Visi & Misi</a>
+              <a class="dropdown-item" href="profil.html#profil-gambaranumum"
+                >Gambaran Umum</a
+              >
+              <a class="dropdown-item" href="profil.html#profil-lokasi"
+                >Lokasi</a
+              >
             </div>
           </div>
 
@@ -91,18 +95,10 @@
             </div>
             <div class="dropdown-menu">
               <a class="dropdown-item" href="index.html#agenda">Agenda</a>
-              <a class="dropdown-item" href="informasi.html#urban">Urban Farming</a>
-            </div>
-          </div>
-
-          <div class="dropdown">
-            <div class="nav-link dropdown-toggle-btn active" tabindex="0">
-              Demografis
-              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
-            </div>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="demografis.html#statistik-kemiskinan">Tingkat Kemiskinan</a>
-              <a class="dropdown-item" href="demografis.html#statistik-kesehatan">Kesehatan Masyarakat</a>
+              <a class="dropdown-item" href="index.html#berita">Berita</a>
+              <a class="dropdown-item" href="informasi.html#urban"
+                >Urban Farming</a
+              >
             </div>
           </div>
 
@@ -125,34 +121,41 @@
     </header>
 
     <main>
-    <section id="statistik" class="section">
+      <section id="statistik" class="section">
         <div class="container">
-            <h1 class="page-title">Data Demografis Keparakan Lor</h1>
-            <div class="stats-header">
-                <p>Data sosial dasar wilayah kami</p>
+          <h1 class="page-title">Data Demografis Keparakan Lor</h1>
+          <div class="stats-header">
+            <p>Data sosial dasar wilayah kami</p>
+          </div>
+
+          <div class="stats-cards--2col">
+            <div id="statistik-kemiskinan" class="stat-card">
+              <div class="stat-icon bg-orange">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="stat-title">Tingkat Kemiskinan</div>
+              <div class="stat-desc">
+                Data terbaru:
+                <span class="kemiskinan-data">12% warga</span> berada pada
+                kategori pra-sejahtera / rentan miskin.
+              </div>
             </div>
 
-            <div class="stats-cards--2col">
-                <div id="statistik-kemiskinan" class="stat-card">
-                    <div class="stat-icon bg-orange"><i class="fas fa-chart-line"></i></div>
-                    <div class="stat-title">Tingkat Kemiskinan</div>
-                    <div class="stat-desc">
-                        Data terbaru: <span class="kemiskinan-data">12% warga</span> berada pada kategori pra-sejahtera / rentan miskin.
-                    </div>
-                </div>
-
-                <div id="statistik-kesehatan" class="stat-card">
-                    <div class="stat-icon bg-blue"><i class="fas fa-hospital-user"></i></div>
-                    <div class="stat-title">Kesehatan Masyarakat</div>
-                    <div class="stat-desc">
-                        Cakupan posyandu, imunisasi dasar, dan pemantauan kesehatan lingkungan sangat diutamakan. (Contoh: 95% balita aktif posyandu)
-                    </div>
-                </div>
+            <div id="statistik-kesehatan" class="stat-card">
+              <div class="stat-icon bg-blue">
+                <i class="fas fa-hospital-user"></i>
+              </div>
+              <div class="stat-title">Kesehatan Masyarakat</div>
+              <div class="stat-desc">
+                Cakupan posyandu, imunisasi dasar, dan pemantauan kesehatan
+                lingkungan sangat diutamakan. (Contoh: 95% balita aktif
+                posyandu)
+              </div>
             </div>
-            
-            </div>
-    </section>
-</main>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="footer" id="lapak">
