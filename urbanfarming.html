@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Urban Farming | Keparakan Lor</title>
+
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    />
+    <meta name="theme-color" content="#0d6efd" />
+  </head>
+  <body>
+    <!-- TOP BAR -->
+    <div class="topbar">
+      <div class="topbar-inner container">
+        <div class="top-left">
+          <div>
+            <span class="meta-icon"><i class="fas fa-phone"></i></span>
+            0812-3456-7890
+          </div>
+          <div>|</div>
+          <div>
+            <span class="meta-icon"><i class="fas fa-envelope"></i></span>
+            kelurahan.keparakanlor@example.go.id
+          </div>
+        </div>
+        <div class="top-right">
+          <div class="socials">
+            <a href="#" aria-label="facebook" title="Facebook"
+              ><i class="fab fa-facebook-f"></i
+            ></a>
+            <a href="#" aria-label="twitter" title="Twitter"
+              ><i class="fab fa-twitter"></i
+            ></a>
+            <a href="#" aria-label="youtube" title="YouTube"
+              ><i class="fab fa-youtube"></i
+            ></a>
+            <a href="#" aria-label="instagram" title="Instagram"
+              ><i class="fab fa-instagram"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="navbar" id="navbar">
+      <div class="nav-inner container">
+        <div class="brand">
+          <div class="brand-logo">
+            <img src="img/logo-pemerintah-keparakanlor.png" alt="Logo" />
+          </div>
+          <div class="brand-title">
+            <span class="main">Keparakan Lor</span>
+            <span class="sub">Kemantren Mergangsan · Kota Yogyakarta</span>
+          </div>
+        </div>
+
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+
+        <nav class="nav-links-wrapper" id="navLinks">
+          <a class="nav-link active" href="index.html">Home</a>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Profil
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="profil.html#profil-gambaranumum"
+                >Gambaran Umum</a
+              >
+              <a class="dropdown-item" href="profil.html#profil-lokasi"
+                >Lokasi</a
+              >
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Informasi
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="index.html#agenda">Agenda</a>
+              <a class="dropdown-item" href="index.html#berita">Berita</a>
+              <a class="dropdown-item" href="index.html#urban">Urban Farming</a>
+            </div>
+          </div>
+
+          <div class="dropdown">
+            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+              Media
+              <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
+            </div>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" href="media.html">Foto</a>
+              <a class="dropdown-item" href="media.html#video">Video</a>
+            </div>
+          </div>
+
+          <div class="dark-toggle" id="darkToggle" title="Toggle Dark Mode">
+            <div class="toggle-ball" id="toggleBall">🌙</div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO MINI -->
+      <section class="section" style="padding-bottom: 1.25rem">
+        <div class="container">
+          <h1 class="page-title">Urban Farming</h1>
+          <p class="text-dim" style="margin-top: -0.5rem">
+            Kumpulan tanaman, deskripsi singkat, serta langkah praktis cara
+            menanam.
+          </p>
+        </div>
+      </section>
+
+      <!-- SEARCH + GRID TANAMAN -->
+      <section class="section" style="padding-top: 0">
+        <div class="container">
+          <!-- Search -->
+          <div class="content-card" style="padding: 1rem; margin-bottom: 1rem">
+            <label for="searchPlant" class="label-sm">Cari tanaman</label>
+            <input
+              id="searchPlant"
+              type="search"
+              placeholder="Cari nama tanaman atau deskripsi…"
+              class="input"
+            />
+          </div>
+
+          <!-- Grid -->
+          <div id="plantGrid" class="plant-grid"></div>
+
+          <!-- Empty -->
+          <div
+            id="emptyPlant"
+            class="text-dim"
+            style="display: none; text-align: center; margin-top: 1rem"
+          >
+            Tidak ada tanaman yang cocok dengan pencarian.
+          </div>
+
+          <!-- Pagination controls -->
+          <div id="pager" class="pager" style="display: none">
+            <button
+              id="btnPrev"
+              class="pager-btn"
+              aria-label="Halaman sebelumnya"
+            >
+              <i class="fas fa-chevron-left"></i> Sebelumnya
+            </button>
+
+            <div
+              id="pagerDots"
+              class="pager-dots"
+              aria-label="Navigasi halaman"
+            ></div>
+
+            <button
+              id="btnNext"
+              class="pager-btn"
+              aria-label="Halaman berikutnya"
+            >
+              Berikutnya <i class="fas fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div>
+          <div class="footer-title">Tentang Web</div>
+          <div class="footer-logo">
+            <img
+              src="img/logo-pemerintah-keparakanlor.png"
+              alt="Logo Keparakan Lor"
+            />
+          </div>
+          <p>
+            Website resmi Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
+            Media informasi publik dan transparansi pemerintah
+            kelurahan/kampung.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Kontak</div>
+          <p>
+            📍 Jl. .........., Keparakan Lor,<br />Mergangsan, Yogyakarta, 55153
+          </p>
+          <p>📞 0812-3456-7890</p>
+          <p>✉️ admin@keparakanlor.go.id</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Kontak Penting</div>
+          <p>Puskesmas - (0274) 000000</p>
+        </div>
+
+        <div>
+          <div class="footer-title">Layanan Warga</div>
+          <a href="#">Sistem Informasi Kelurahan</a>
+          <a href="#">Pengaduan Online</a>
+          <a href="#">Pengajuan Surat</a>
+          <a href="#">Info Kesehatan</a>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <div>Copyright © Keparakan Lor · All rights reserved</div>
+        <div class="footer-soc">
+          <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- SCROLL TOP -->
+    <div class="scroll-top-btn" id="scrollTopBtn" title="Kembali ke atas">
+      <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- JS UTAMA -->
+    <script src="main.js"></script>
+
+    <!-- JS KHUSUS URBAN FARMING (Grid 3x3 + Pagination + Topsheet scrollable) -->
+    <script>
+      // ====== DATA TANAMAN (tambah sesuai kebutuhan) ======
+      const PLANTS_DATA = [
+        {
+          name: "Sawi Pagoda",
+          alias: "Brassica rapa subsp. narinosa",
+          img: "plant/urban_sawi_pagoda.jpg",
+          desc: "Sayuran daun bernilai ekonomi tinggi, cocok hidroponik/soil pot. Tekstur renyah, rasa ringan.",
+          steps: [
+            "Semai: rendam benih 2–4 jam, semai di rockwool/cocopeat; jaga lembap.",
+            "Pindah tanam: 10–14 HSS (2–3 daun sejati).",
+            "Nutrisi/pH: EC 1.4–2.0 mS/cm, pH 5.8–6.3.",
+            "Cahaya: 4–6 jam matahari langsung atau growlight 12–14 jam.",
+            "Panen: 25–35 HST (tinggi 20–25 cm).",
+          ],
+        },
+        {
+          name: "Kangkung",
+          alias: "Ipomoea aquatica",
+          img: "plant/urban_kangkung.jpg",
+          desc: "Tumbuh cepat, toleran panas. Cocok sistem DWC/rakit apung maupun tanah.",
+          steps: [
+            "Semai langsung di netpot (kerikil/rockwool).",
+            "Nutrisi/pH: EC 1.2–1.8 mS/cm, pH 5.8–6.5.",
+            "Jaga air bersih & sirkulasi baik.",
+            "Panen: 20–30 HST, potong di atas ruas.",
+          ],
+        },
+        {
+          name: "Selada",
+          alias: "Lactuca sativa",
+          img: "plant/urban_selada.jpg",
+          desc: "Renyah segar. Ideal hidroponik NFT/DWC, lebih suka suhu sejuk.",
+          steps: [
+            "Semai: rockwool lembap, intensitas cahaya cukup.",
+            "Pindah tanam: 10–14 HSS (2–3 daun sejati).",
+            "Nutrisi/pH: EC 0.8–1.4 mS/cm, pH 5.8–6.2.",
+            "Cegah bolting: hindari panas berlebih.",
+            "Panen: 35–45 HST (cut & come again atau cabut).",
+          ],
+        },
+        {
+          name: "Pakcoy",
+          alias: "Brassica rapa var. chinensis",
+          img: "plant/urban_pakcoy.jpg",
+          desc: "Cepat panen, daun tebal, rasa ringan. Cocok hidroponik sederhana.",
+          steps: [
+            "Semai: media rockwool; jaga kelembapan.",
+            "EC/pH: 1.4–2.0 mS/cm, pH 5.8–6.3.",
+            "Cahaya: cukup agar kompak & hijau.",
+            "Panen: 25–35 HST.",
+          ],
+        },
+        {
+          name: "Tomat Cherry",
+          alias: "Solanum lycopersicum var. cerasiforme",
+          img: "plant/urban_tomat_cherry.jpg",
+          desc: "Buah kecil manis; butuh ajir/trellis & cahaya penuh.",
+          steps: [
+            "Semai: tray cocopeat/rockwool; pindah saat 4–5 daun.",
+            "Media: soil mix poros atau hidroponik drip.",
+            "Nutrisi/pH: EC 2.0–3.0 mS/cm, pH 5.8–6.5.",
+            "Pemangkasan tunas & bantu penyerbukan (ketuk bunga).",
+            "Panen: 65–85 HST saat merah cerah.",
+          ],
+        },
+
+        // ===== Tambahan dummy agar terlihat paging 3x3 =====
+        {
+          name: "Bayam Hijau",
+          alias: "Amaranthus tricolor",
+          img: "plant/urban_bayam.jpg",
+          desc: "Cepat tumbuh, kaya zat besi. Cocok pot/raised bed.",
+          steps: [
+            "Tabur benih tipis, tutup tipis media.",
+            "Sirami lembut; jaga lembap.",
+            "Panen: 20–30 HST (baby leaf).",
+          ],
+        },
+        {
+          name: "Seledri",
+          alias: "Apium graveolens",
+          img: "plant/urban_seledri.jpg",
+          desc: "Aromatik untuk bumbu; butuh media lembap & kaya humus.",
+          steps: [
+            "Semai halus; pindah saat 3–4 daun.",
+            "Siram rutin; hindari kering total.",
+            "Panen: 60–80 HST, petik bertahap.",
+          ],
+        },
+        {
+          name: "Cabai Rawit",
+          alias: "Capsicum frutescens",
+          img: "plant/urban_cabai.jpg",
+          desc: "Pedas kuat; butuh sinar penuh & drainase baik.",
+          steps: [
+            "Semai di tray; pindah saat kokoh.",
+            "Pemupukan rutin NPK seimbang.",
+            "Panen: 80–100 HST saat merah.",
+          ],
+        },
+        {
+          name: "Timun",
+          alias: "Cucumis sativus",
+          img: "plant/urban_timun.jpg",
+          desc: "Buah segar; cocok rambat/trellis.",
+          steps: [
+            "Semai 2 benih per lubang, sisakan 1 kuat.",
+            "Butuh sinar penuh & penyiraman cukup.",
+            "Panen: 35–45 HST (muda/segarkan).",
+          ],
+        },
+        {
+          name: "Strawberi",
+          alias: "Fragaria × ananassa",
+          img: "plant/urban_stroberi.jpg",
+          desc: "Butuh media poros & sinar cukup; rawan busuk buah.",
+          steps: [
+            "Gunakan bibit stolon/seedling sehat.",
+            "Mulsa & ventilasi baik.",
+            "Panen: saat merah merata.",
+          ],
+        },
+        {
+          name: "Daun Mint",
+          alias: "Mentha spicata",
+          img: "plant/urban_mint.jpg",
+          desc: "Aromatik; tumbuh menyebar. Cocok pot terpisah.",
+          steps: [
+            "Stek batang mudah tumbuh.",
+            "Jaga lembap; sinar tidak terlalu terik.",
+            "Pangkas rutin agar rimbun.",
+          ],
+        },
+      ];
+
+      // ====== Pagination + Search ======
+      const plantGrid = document.getElementById("plantGrid");
+      const searchPlant = document.getElementById("searchPlant");
+      const emptyPlant = document.getElementById("emptyPlant");
+
+      const pagerEl = document.getElementById("pager");
+      const pagerDotsEl = document.getElementById("pagerDots");
+      const btnPrev = document.getElementById("btnPrev");
+      const btnNext = document.getElementById("btnNext");
+
+      const ITEMS_PER_PAGE = 9; // 3 x 3
+      let filtered = [...PLANTS_DATA];
+      let currentPage = 1;
+      let totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+
+      function renderGridPage(items, page) {
+        const start = (page - 1) * ITEMS_PER_PAGE;
+        const view = items.slice(start, start + ITEMS_PER_PAGE);
+
+        if (!view.length) {
+          plantGrid.innerHTML = "";
+          emptyPlant.style.display = "block";
+          return;
+        }
+        emptyPlant.style.display = "none";
+
+        plantGrid.innerHTML = view
+          .map((p, idx) => {
+            const topsheetId = `topsheet-${start + idx}`;
+            return `
+              <article class="plant-card">
+                <div class="plant-thumb" data-opener="${topsheetId}" role="button" tabindex="0" aria-label="Buka Cara Menanam: ${
+              p.name
+            }">
+                  <img src="${p.img}" alt="${p.name}" loading="lazy"/>
+
+                  <!-- Gradient bawah untuk kontras -->
+                  <div class="plant-gradient"></div>
+
+                  <!-- BOTTOMBAR: Judul + tombol (di atas gradient) -->
+                  <div class="plant-bottombar">
+                    <h3 class="plant-title" title="${p.name}">${p.name}</h3>
+                    <button
+                      class="steps-trigger"
+                      data-target="${topsheetId}"
+                      aria-expanded="false"
+                      aria-controls="${topsheetId}"
+                      title="Lihat cara menanam"
+                    >
+                      <i class="fas fa-seedling"></i><span class="hide-sm"> Cara Menanam</span>
+                    </button>
+                  </div>
+
+                  <!-- TOPSHEET: Cara menanam muncul dari ATAS foto, scrollable -->
+                  <div id="${topsheetId}" class="steps-topsheet" hidden>
+                    <div class="steps-topsheet-inner">
+                      <div class="steps-topsheet-head">
+                        <strong><i class="fas fa-seedling"></i> Cara Menanam — ${
+                          p.name
+                        }</strong>
+                        <button class="topsheet-close" data-close="${topsheetId}" aria-label="Tutup">
+                          <i class="fas fa-times"></i>
+                        </button>
+                      </div>
+                      <ol class="steps-list">
+                        ${(p.steps || []).map((s) => `<li>${s}</li>`).join("")}
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="plant-body">
+                  ${
+                    p.alias
+                      ? `<p class="plant-latin"><em>${p.alias}</em></p>`
+                      : ""
+                  }
+                  <p class="plant-desc">${p.desc || ""}</p>
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        bindTopsheetEvents(); // re-bind setelah render
+      }
+
+      function renderPager() {
+        totalPages = Math.max(1, Math.ceil(filtered.length / ITEMS_PER_PAGE));
+        pagerEl.style.display = totalPages > 1 ? "flex" : "none";
+        btnPrev.disabled = currentPage <= 1;
+        btnNext.disabled = currentPage >= totalPages;
+
+        pagerDotsEl.innerHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+          const dot = document.createElement("button");
+          dot.className = "pager-dot" + (i === currentPage ? " active" : "");
+          dot.setAttribute("aria-label", "Halaman " + i);
+          dot.addEventListener("click", () => {
+            currentPage = i;
+            updateView();
+          });
+          pagerDotsEl.appendChild(dot);
+        }
+      }
+
+      function updateView() {
+        renderGridPage(filtered, currentPage);
+        renderPager();
+        document
+          .getElementById("plantGrid")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      function applyPlantSearch() {
+        const q = (searchPlant.value || "").toLowerCase().trim();
+        filtered = PLANTS_DATA.filter((p) => {
+          const hay = (
+            p.name +
+            " " +
+            (p.alias || "") +
+            " " +
+            (p.desc || "")
+          ).toLowerCase();
+          return !q || hay.includes(q);
+        });
+        currentPage = 1;
+        updateView();
+      }
+
+      // ===== Topsheet overlay bindings =====
+      function bindTopsheetEvents() {
+        document.querySelectorAll(".steps-trigger").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleTopsheet(btn.dataset.target, true, btn);
+          });
+        });
+
+        document.querySelectorAll(".plant-thumb").forEach((thumb) => {
+          thumb.addEventListener("click", (e) => {
+            if (e.target.closest(".steps-trigger")) return;
+            toggleTopsheet(thumb.dataset.opener, true);
+          });
+          thumb.addEventListener("keydown", (e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              toggleTopsheet(thumb.dataset.opener, true);
+            }
+          });
+        });
+
+        document.querySelectorAll(".topsheet-close").forEach((b) => {
+          b.addEventListener("click", (e) => {
+            e.stopPropagation();
+            toggleTopsheet(b.dataset.close, false);
+          });
+        });
+
+        document.addEventListener("keydown", (e) => {
+          if (e.key === "Escape") {
+            document
+              .querySelectorAll(".steps-topsheet:not([hidden])")
+              .forEach((ts) => {
+                toggleTopsheet(ts.id, false);
+              });
+          }
+        });
+      }
+
+      function toggleTopsheet(id, open, triggerBtn = null) {
+        const ts = document.getElementById(id);
+        if (!ts) return;
+
+        const card = ts.closest(".plant-card");
+        card.querySelectorAll(".steps-topsheet").forEach((other) => {
+          if (other.id !== id) other.setAttribute("hidden", "");
+        });
+
+        if (open) {
+          ts.removeAttribute("hidden");
+          if (triggerBtn) triggerBtn.setAttribute("aria-expanded", "true");
+          const closeBtn = ts.querySelector(".topsheet-close");
+          closeBtn && closeBtn.focus && closeBtn.focus();
+        } else {
+          ts.setAttribute("hidden", "");
+          document.querySelectorAll(`[data-target="${id}"]`).forEach((b) => {
+            b.setAttribute("aria-expanded", "false");
+          });
+        }
+      }
+
+      // Events
+      searchPlant.addEventListener("input", applyPlantSearch);
+      btnPrev.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+      });
+      btnNext.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Keyboard: panah kiri/kanan untuk navigasi halaman
+      document.addEventListener("keydown", (e) => {
+        if (totalPages <= 1) return;
+        if (e.key === "ArrowLeft" && currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+        if (e.key === "ArrowRight" && currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Init
+      updateView();
+    </script>
+
+    <!-- STYLE KECIL KHUSUS URBAN FARMING -->
+    <style>
+      .page-title {
+        margin: 0 0 0.25rem 0;
+      }
+      .text-dim {
+        color: var(--text-dim);
+      }
+      .content-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        box-shadow: var(--shadow-card);
+      }
+      .label-sm {
+        display: block;
+        font-size: 0.8rem;
+        color: var(--text-dim);
+        margin-bottom: 0.35rem;
+      }
+      .input {
+        width: 100%;
+        padding: 0.65rem 0.8rem;
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        background: var(--bg-card);
+        color: var(--text-main);
+      }
+
+      /* GRID 3 kolom responsif (tetap 9 item per halaman) */
+      .plant-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      @media (min-width: 720px) {
+        .plant-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1100px) {
+        .plant-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      /* CARD TANAMAN */
+      .plant-card {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+        transition: transform 0.15s ease;
+      }
+      .plant-card:hover {
+        transform: translateY(-2px);
+      }
+
+      .plant-thumb {
+        position: relative;
+        width: 100%;
+        padding-top: 62%;
+        background: #000;
+        cursor: pointer;
+        overflow: hidden;
+      }
+      .plant-thumb img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transform: scale(1);
+        transition: transform 0.25s ease;
+      }
+      .plant-thumb:hover img {
+        transform: scale(1.03);
+      }
+
+      /* Gradient di bawah (untuk kontras teks) */
+      .plant-gradient {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 46%;
+        background: linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.55),
+          rgba(0, 0, 0, 0)
+        );
+        z-index: 1;
+        pointer-events: none;
+      }
+
+      /* BOTTOMBAR: judul + tombol tepat di atas gradient */
+      .plant-bottombar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.65rem 0.75rem 0.75rem;
+        z-index: 2;
+      }
+      .plant-title {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+        max-width: 70%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .steps-trigger {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: rgba(255, 255, 255, 0.94);
+        color: #111827;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        border-radius: 0.6rem;
+        padding: 0.45rem 0.7rem;
+        cursor: pointer;
+        box-shadow: var(--shadow-card);
+        font-weight: 600;
+        font-size: 0.9rem;
+        white-space: nowrap;
+      }
+      body.dark .steps-trigger {
+        background: rgba(30, 41, 59, 0.92);
+        color: #e5e7eb;
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .plant-body {
+        padding: 1rem;
+      }
+      .plant-latin {
+        margin: 0 0 0.35rem 0;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+      }
+      .plant-desc {
+        color: var(--text-dim);
+        font-size: 0.95rem;
+        line-height: 1.5;
+        margin: 0;
+      }
+
+      /* TOPSHEET: Cara menanam dari ATAS foto — FULL AREA & SCROLLABLE */
+      .steps-topsheet[hidden] {
+        display: none !important;
+      }
+      .steps-topsheet {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0; /* isi penuh area foto */
+        z-index: 3;
+        display: flex;
+        align-items: flex-start;
+        justify-content: stretch;
+        transform-origin: top center;
+        animation: slideDown 0.18s ease-out;
+      }
+      @keyframes slideDown {
+        from {
+          transform: translateY(-6px);
+          opacity: 0.6;
+        }
+        to {
+          transform: translateY(0);
+          opacity: 1;
+        }
+      }
+      .steps-topsheet-inner {
+        /* beri margin agar tidak rapat ke tepi foto */
+        margin: 0.5rem;
+        width: calc(100% - 1rem); /* 100% minus margin kiri/kanan */
+        max-height: calc(100% - 1rem); /* tinggi dibatasi area foto */
+        overflow-y: auto; /* BISA DI-SCROLL */
+        -webkit-overflow-scrolling: touch; /* smooth scroll di mobile */
+        background: rgba(255, 255, 255, 0.96);
+        border: 1px solid var(--border-card);
+        border-radius: 0.75rem;
+        box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
+        backdrop-filter: saturate(140%) blur(2px);
+      }
+      body.dark .steps-topsheet-inner {
+        background: rgba(30, 41, 59, 0.96);
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+      .steps-topsheet-head {
+        position: sticky;
+        top: 0; /* header tetap terlihat saat scroll */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        padding: 0.7rem 0.9rem;
+        border-bottom: 1px solid var(--border-card);
+        color: var(--text-main);
+        background: inherit; /* samakan bg dengan panel */
+        z-index: 1;
+      }
+      .steps-topsheet-head strong {
+        font-size: 0.98rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .topsheet-close {
+        background: transparent;
+        border: 1px solid var(--border-card);
+        border-radius: 0.55rem;
+        padding: 0.35rem 0.5rem;
+        cursor: pointer;
+        color: var(--text-main);
+      }
+      .steps-list {
+        margin: 0.6rem 0.9rem 0.9rem 1.25rem;
+        color: var(--text-main);
+      }
+      .steps-list li {
+        margin: 0.3rem 0;
+        line-height: 1.55;
+      }
+
+      /* Pager */
+      .pager {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .pager-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        padding: 0.55rem 0.8rem;
+        font-weight: 500;
+        color: var(--text-main);
+        cursor: pointer;
+        box-shadow: var(--shadow-card);
+      }
+      .pager-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .pager-dots {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .pager-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        border: 1px solid var(--border-card);
+        background: #cbd5e1;
+        cursor: pointer;
+      }
+      body.dark .pager-dot {
+        background: #475569;
+      }
+      .pager-dot.active {
+        background: var(--brand-blue);
+        border-color: var(--brand-blue);
+      }
+
+      /* Responsif kecil: sembunyikan teks tombol supaya rapi */
+      @media (max-width: 420px) {
+        .hide-sm {
+          display: none;
+        }
+      }
+    </style>
+  </body>
+</html>

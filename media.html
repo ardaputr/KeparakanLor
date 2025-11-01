@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Profil Keparakan Lor | Kemantren Mergangsan</title>
+    <title>Media | Keparakan Lor</title>
 
     <link rel="stylesheet" href="style.css" />
     <link
@@ -14,6 +14,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <meta name="theme-color" content="#0d6efd" />
   </head>
   <body>
     <!-- TOP BAR -->
@@ -71,7 +72,7 @@
         </button>
 
         <nav class="nav-links-wrapper" id="navLinks">
-          <a class="nav-link active" href="index.html">Home</a>
+          <a class="nav-link" href="index.html">Home</a>
 
           <div class="dropdown">
             <div class="nav-link dropdown-toggle-btn" tabindex="0">
@@ -94,21 +95,21 @@
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="index.html#agenda">Agenda</a>
-              <a class="dropdown-item" href="index.html#berita">Berita</a>
-              <a class="dropdown-item" href="informasi.html#urban"
+              <a class="dropdown-item" href="agenda.html">Agenda</a>
+              <a class="dropdown-item" href="berita.html">Berita</a>
+              <a class="dropdown-item" href="urbanfarming.html"
                 >Urban Farming</a
               >
             </div>
           </div>
 
           <div class="dropdown">
-            <div class="nav-link dropdown-toggle-btn" tabindex="0">
+            <div class="nav-link dropdown-toggle-btn active" tabindex="0">
               Media
               <span class="meta-icon"><i class="fas fa-caret-down"></i></span>
             </div>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="media.html">Foto</a>
+              <a class="dropdown-item" href="media.html#galeri">Foto</a>
               <a class="dropdown-item" href="media.html#video">Video</a>
             </div>
           </div>
@@ -121,40 +122,58 @@
     </header>
 
     <main>
+      <!-- GALERI FOTO -->
       <section id="galeri" class="section">
         <div class="container">
           <h1 class="page-title">Galeri Foto Kegiatan</h1>
 
-          <div class="gallery-grid">
-            <div class="gallery-item">
-              <img src="img/foto1.jpg" alt="Foto 1" />
-            </div>
-            <div class="gallery-item">
-              <img src="img/foto2.jpg" alt="Foto 2" />
-            </div>
-            <div class="gallery-item">
-              <img src="img/foto3.jpg" alt="Foto 3" />
-            </div>
-            <div class="gallery-item">
-              <img src="img/foto4.jpg" alt="Foto 4" />
-            </div>
-            <div class="gallery-item">
-              <img src="img/foto5.jpg" alt="Foto 5" />
-            </div>
-            <div class="gallery-item">
-              <img src="img/foto6.jpg" alt="Foto 6" />
-            </div>
+          <!-- Grid akan di-render via JS -->
+          <div id="galleryGrid" class="gallery-grid"></div>
+
+          <!-- Empty state -->
+          <div
+            id="galleryEmpty"
+            class="text-dim"
+            style="display: none; text-align: center; margin-top: 1rem"
+          >
+            Belum ada foto pada halaman ini.
+          </div>
+
+          <!-- Pagination controls -->
+          <div id="pager" class="pager" style="display: none">
+            <button
+              id="btnPrev"
+              class="pager-btn"
+              aria-label="Halaman sebelumnya"
+            >
+              <i class="fas fa-chevron-left"></i> Sebelumnya
+            </button>
+
+            <div
+              id="pagerDots"
+              class="pager-dots"
+              aria-label="Navigasi halaman"
+            ></div>
+
+            <button
+              id="btnNext"
+              class="pager-btn"
+              aria-label="Halaman berikutnya"
+            >
+              Berikutnya <i class="fas fa-chevron-right"></i>
+            </button>
           </div>
         </div>
       </section>
 
+      <!-- VIDEO -->
       <section id="video" class="section">
         <div class="container">
           <div class="section-header-row">
             <h2>Video Dokumentasi</h2>
-            <a href="#" class="more-link"
+            <!-- <a href="#" class="more-link"
               >Semua Video <i class="fas fa-arrow-right"></i
-            ></a>
+            ></a> -->
           </div>
 
           <div class="video-grid">
@@ -198,8 +217,7 @@
         <div>
           <div class="footer-title">Kontak</div>
           <p>
-            📍 Jl. .........., Keparakan Lor,<br />
-            Mergangsan, Yogyakarta, 55153
+            📍 Jl. .........., Keparakan Lor,<br />Mergangsan, Yogyakarta, 55153
           </p>
           <p>📞 0812-3456-7890</p>
           <p>✉️ admin@keparakanlor.go.id</p>
@@ -239,5 +257,240 @@
     </div>
 
     <script src="main.js"></script>
+
+    <!-- JS KHUSUS GALERI: 3x3 + Pagination -->
+    <script>
+      // ====== DATA FOTO GALERI (tambah/kurangi sesuai kebutuhan) ======
+      const PHOTOS = [
+        { src: "img/foto1.jpg", alt: "Kegiatan Warga 1" },
+        { src: "img/foto2.jpg", alt: "Kegiatan Warga 2" },
+        { src: "img/foto3.jpg", alt: "Kegiatan Warga 3" },
+        { src: "img/foto4.jpg", alt: "Kegiatan Warga 4" },
+        { src: "img/foto5.jpg", alt: "Kegiatan Warga 5" },
+        { src: "img/foto6.jpg", alt: "Kegiatan Warga 6" },
+
+        // Tambahan dummy untuk melihat paging
+        { src: "img/foto7.jpg", alt: "Kegiatan Warga 7" },
+        { src: "img/foto8.jpg", alt: "Kegiatan Warga 8" },
+        { src: "img/foto9.jpg", alt: "Kegiatan Warga 9" },
+        { src: "img/foto10.jpg", alt: "Kegiatan Warga 10" },
+        { src: "img/foto11.jpg", alt: "Kegiatan Warga 11" },
+        { src: "img/foto12.jpg", alt: "Kegiatan Warga 12" },
+      ];
+
+      const gridEl = document.getElementById("galleryGrid");
+      const emptyEl = document.getElementById("galleryEmpty");
+
+      const pagerEl = document.getElementById("pager");
+      const pagerDotsEl = document.getElementById("pagerDots");
+      const btnPrev = document.getElementById("btnPrev");
+      const btnNext = document.getElementById("btnNext");
+
+      const ITEMS_PER_PAGE = 9; // 3 x 3
+      let currentPage = 1;
+      let totalPages = Math.max(1, Math.ceil(PHOTOS.length / ITEMS_PER_PAGE));
+
+      function renderGridPage(page) {
+        const start = (page - 1) * ITEMS_PER_PAGE;
+        const view = PHOTOS.slice(start, start + ITEMS_PER_PAGE);
+
+        if (!view.length) {
+          gridEl.innerHTML = "";
+          emptyEl.style.display = "block";
+          return;
+        }
+        emptyEl.style.display = "none";
+
+        gridEl.innerHTML = view
+          .map(
+            (p) => `
+            <div class="gallery-item">
+              <img src="${p.src}" alt="${
+              p.alt || "Foto Kegiatan"
+            }" loading="lazy" />
+            </div>`
+          )
+          .join("");
+      }
+
+      function renderPager() {
+        totalPages = Math.max(1, Math.ceil(PHOTOS.length / ITEMS_PER_PAGE));
+        pagerEl.style.display = totalPages > 1 ? "flex" : "none";
+
+        btnPrev.disabled = currentPage <= 1;
+        btnNext.disabled = currentPage >= totalPages;
+
+        pagerDotsEl.innerHTML = "";
+        for (let i = 1; i <= totalPages; i++) {
+          const dot = document.createElement("button");
+          dot.className = "pager-dot" + (i === currentPage ? " active" : "");
+          dot.setAttribute("aria-label", "Halaman " + i);
+          dot.addEventListener("click", () => {
+            currentPage = i;
+            updateView();
+          });
+          pagerDotsEl.appendChild(dot);
+        }
+      }
+
+      function updateView() {
+        renderGridPage(currentPage);
+        renderPager();
+        document
+          .getElementById("galeri")
+          .scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      // Events
+      btnPrev.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+      });
+      btnNext.addEventListener("click", () => {
+        if (currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Aksesibilitas: panah kiri/kanan untuk ganti halaman
+      document.addEventListener("keydown", (e) => {
+        if (totalPages <= 1) return;
+        if (e.key === "ArrowLeft" && currentPage > 1) {
+          currentPage--;
+          updateView();
+        }
+        if (e.key === "ArrowRight" && currentPage < totalPages) {
+          currentPage++;
+          updateView();
+        }
+      });
+
+      // Init
+      updateView();
+    </script>
+
+    <!-- STYLE KECIL KHUSUS GALERI & PAGINATION -->
+    <style>
+      .page-title {
+        margin: 0 0 0.75rem 0;
+      }
+      .text-dim {
+        color: var(--text-dim);
+      }
+
+      /* GRID GALERI 3 kolom responsif (3x3 per halaman) */
+      .gallery-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+      @media (min-width: 720px) {
+        .gallery-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      @media (min-width: 1100px) {
+        .gallery-grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+
+      .gallery-item {
+        position: relative;
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        box-shadow: var(--shadow-card);
+      }
+      .gallery-item img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        aspect-ratio: 4/3;
+        object-fit: cover;
+        transition: transform 0.2s ease;
+      }
+      .gallery-item:hover img {
+        transform: scale(1.02);
+      }
+
+      /* Video grid (mengikuti style sebelumnya) */
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      @media (min-width: 900px) {
+        .video-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+      .video-frame {
+        position: relative;
+        padding-top: 56.25%;
+        background: #000;
+        border-radius: var(--radius-card);
+        overflow: hidden;
+        border: 1px solid var(--border-card);
+        box-shadow: var(--shadow-card);
+      }
+      .video-frame iframe {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+      }
+
+      /* Pager umum */
+      .pager {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.75rem;
+        flex-wrap: wrap;
+      }
+      .pager-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-card);
+        border-radius: 0.6rem;
+        padding: 0.55rem 0.8rem;
+        font-weight: 500;
+        color: var(--text-main);
+        cursor: pointer;
+        box-shadow: var(--shadow-card);
+      }
+      .pager-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+      .pager-dots {
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        justify-content: center;
+      }
+      .pager-dot {
+        width: 9px;
+        height: 9px;
+        border-radius: 999px;
+        border: 1px solid var(--border-card);
+        background: #cbd5e1;
+        cursor: pointer;
+      }
+      body.dark .pager-dot {
+        background: #475569;
+      }
+      .pager-dot.active {
+        background: var(--brand-blue);
+        border-color: var(--brand-blue);
+      }
+    </style>
   </body>
 </html>
