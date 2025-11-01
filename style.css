@@ -583,6 +583,114 @@ body.dark .slider-dots .dot {
   }
 }
 
+/* ====== NAVBAR MOBILE FIX (tampilkan hamburger & cegah overflow) ====== */
+html,
+body {
+  overflow-x: hidden;
+}
+.navbar,
+.nav-inner {
+  max-width: 100vw;
+}
+.nav-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Jaga judul tidak mendorong hamburger keluar layar */
+.brand,
+.brand-title {
+  min-width: 0;
+}
+.brand-title .main,
+.brand-title .sub {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* DEFAULT: sembunyikan menu desktop-only behaviour tidak dipakai di mobile */
+@media (max-width: 991px) {
+  /* hamburger wajib tampil */
+  .menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    margin: 0;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    color: var(--text-main);
+    z-index: 1601; /* di atas panel menu */
+  }
+  .menu-toggle i {
+    font-size: 22px;
+    display: block;
+  }
+
+  /* panel menu menutup penuh di bawah navbar */
+  .nav-links-wrapper {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 100%;
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: var(--bg-page);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+    z-index: 1500;
+    max-width: 100vw;
+  }
+  .nav-links-wrapper.open {
+    display: flex;
+  }
+
+  .nav-links-wrapper > a.nav-link {
+    justify-content: center;
+    text-align: center;
+    padding: 12px 1rem;
+    border-bottom: 1px solid var(--border-card);
+  }
+  .nav-links-wrapper > .dropdown > .nav-link {
+    justify-content: space-between;
+    text-align: left;
+  }
+
+  /* dropdown di dalam panel mobile: block & tidak meluber */
+  .dropdown-menu {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    display: none;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+    background: var(--surface-hover);
+  }
+  .dropdown.open > .dropdown-menu {
+    display: block;
+  }
+  .dropdown-item {
+    padding: 0.65rem 1.5rem;
+  }
+
+  /* Hilangkan “sisa putih” dari slider hero di HP */
+  .hero-slider-track {
+    width: 100% !important;
+  }
+  .hero-slide {
+    width: 100% !important;
+  }
+}
+
 /* ============ HERO ============ */
 .hero {
   position: relative;
