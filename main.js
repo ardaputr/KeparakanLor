@@ -306,3 +306,150 @@ document.addEventListener("DOMContentLoaded", () => {
     scrollBtn.style.opacity = "0";
   }
 });
+
+// ====== AGENDA MODAL (detail tanpa pindah halaman) ======
+(function agendaModalInit(){
+  // buat elemen modal sekali saja
+  const backdrop = document.createElement('div');
+  backdrop.className = 'agenda-modal-backdrop';
+  backdrop.innerHTML = `
+    <div class="agenda-modal" role="dialog" aria-modal="true" aria-labelledby="agendaModalTitle">
+      <div class="agenda-modal-header">
+        <h3 id="agendaModalTitle" class="agenda-modal-title">Detail Agenda</h3>
+        <button class="agenda-modal-close" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="agenda-modal-body">
+        <div class="agenda-modal-hero"><img alt="" /></div>
+        <div class="agenda-modal-content">
+          <div class="agenda-modal-meta"></div>
+          <div class="agenda-modal-desc"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+
+  const modal = backdrop.querySelector('.agenda-modal');
+  const btnClose = backdrop.querySelector('.agenda-modal-close');
+  const elImg   = backdrop.querySelector('.agenda-modal-hero img');
+  const elTitle = backdrop.querySelector('#agendaModalTitle');
+  const elMeta  = backdrop.querySelector('.agenda-modal-meta');
+  const elDesc  = backdrop.querySelector('.agenda-modal-desc');
+
+  function openFromCard(card){
+    // Ambil data dari card
+    const title = card.querySelector('.agenda-title')?.textContent?.trim() || 'Agenda';
+    const img   = card.querySelector('.agenda-img img')?.getAttribute('src') || '';
+    const desc  = card.querySelector('.news-desc, .agenda-body p')?.textContent?.trim() || '';
+    // (opsional) tanggal/metadata kalau ada:
+    const meta  = card.querySelector('.agenda-meta')?.textContent?.trim() || '';
+
+    // Isi modal
+    elTitle.textContent = title;
+    elImg.src = img;
+    elImg.alt = title;
+    elMeta.textContent = meta;
+    elDesc.textContent = desc;
+
+    // Tampilkan
+    backdrop.classList.add('open');
+    // kunci scroll belakang
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    // fokus untuk aksesibilitas
+    btnClose.focus();
+  }
+
+  function closeModal(){
+    backdrop.classList.remove('open');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+
+  // Tutup: klik backdrop luar, tombol X, tekan Esc
+  backdrop.addEventListener('click', (e)=>{
+    if (e.target === backdrop) closeModal();
+  });
+  btnClose.addEventListener('click', closeModal);
+  window.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeModal(); });
+
+  // Tambahkan listener ke tiap card agenda
+  const agendaCards = document.querySelectorAll('#agendaTrack .agenda-card');
+  agendaCards.forEach(card=>{
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', ()=>{
+      // Hindari konflik drag pada slider: hanya buka jika bukan sedang dragging besar
+      openFromCard(card);
+    });
+  });
+})();
+
+// ====== BERITA MODAL ======
+(function newsModalInit() {
+  const backdrop = document.createElement('div');
+  backdrop.className = 'news-modal-backdrop';
+  backdrop.innerHTML = `
+    <div class="news-modal" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle">
+      <div class="news-modal-header">
+        <h3 id="newsModalTitle" class="news-modal-title">Detail Berita</h3>
+        <button class="news-modal-close" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="news-modal-body">
+        <div class="news-modal-hero"><img alt="" /></div>
+        <div class="news-modal-content">
+          <div class="news-modal-meta"></div>
+          <div class="news-modal-desc"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+
+  const modal = backdrop.querySelector('.news-modal');
+  const btnClose = backdrop.querySelector('.news-modal-close');
+  const elImg = backdrop.querySelector('.news-modal-hero img');
+  const elTitle = backdrop.querySelector('#newsModalTitle');
+  const elMeta = backdrop.querySelector('.news-modal-meta');
+  const elDesc = backdrop.querySelector('.news-modal-desc');
+
+  function openFromCard(card) {
+    const title = card.querySelector('.news-title')?.textContent?.trim() || 'Berita';
+    const img = card.querySelector('.news-img img')?.getAttribute('src') || '';
+    const desc = card.querySelector('.news-desc')?.textContent?.trim() || '';
+    const meta = card.querySelector('.news-meta')?.textContent?.trim() || '';
+
+    elTitle.textContent = title;
+    elImg.src = img;
+    elImg.alt = title;
+    elMeta.textContent = meta;
+    elDesc.textContent = desc;
+
+    backdrop.classList.add('open');
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    btnClose.focus();
+  }
+
+  function closeModal() {
+    backdrop.classList.remove('open');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  btnClose.addEventListener('click', closeModal);
+  window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
+
+  // Tambahkan listener ke tiap card berita
+  const newsCards = document.querySelectorAll('#newsTrack .news-card');
+  newsCards.forEach(card => {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => {
+      openFromCard(card);
+    });
+  });
+})();

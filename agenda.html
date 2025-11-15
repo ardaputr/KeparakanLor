@@ -187,7 +187,7 @@
     </main>
 
     <!-- FOOTER -->
-    <footer class="footer">
+    <footer class="footer" id="lapak">
       <div class="container footer-grid">
         <div>
           <div class="footer-title">Tentang Web</div>
@@ -198,35 +198,34 @@
             />
           </div>
           <p>
-            Website resmi Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
-            Media informasi publik dan transparansi pemerintah
-            kelurahan/kampung.
+            Pusat informasi kampung Keparakan Lor, Kemantren Mergangsan, Kota Yogyakarta.
           </p>
+        </div>
+
+        <div>
+          <div class="footer-title">Informasi</div>
+          <p>
+            📍 Keparakan Lor,
+            Kec. Mergangsan, Kota Yogyakarta, Daerah Istimewa Yogyakarta
+          </p>
+          <!-- <p>📞 0812-3456-7890</p>
+          <p>✉️ admin@keparakanlor.go.id</p> -->
         </div>
 
         <div>
           <div class="footer-title">Kontak</div>
-          <p>
-            📍 Jl. .........., Keparakan Lor,<br />Mergangsan, Yogyakarta, 55153
-          </p>
-          <p>📞 0812-3456-7890</p>
-          <p>✉️ admin@keparakanlor.go.id</p>
+          <p>Puskesmas - 0811-2632-014</p>
+          <p>Kelurahan - (0274) 515865 </p>
+          <p>Email - keparakan@jogjakota.go.id</p>
+          <!-- <p>PLN - 123</p> -->
         </div>
 
         <div>
-          <div class="footer-title">Kontak Penting</div>
-          <p>Puskesmas - (0274) 000000</p>
-          <p>Polsek - (0274) 000001</p>
-          <p>Damkar - (0274) 000002</p>
-          <p>PLN - 123</p>
-        </div>
-
-        <div>
-          <div class="footer-title">Layanan Warga</div>
-          <a href="#">Sistem Informasi Kelurahan</a>
-          <a href="#">Pengaduan Online</a>
-          <a href="#">Pengajuan Surat</a>
-          <a href="#">Info Kesehatan</a>
+          <div class="footer-title">Menu</div>
+          <a href="#">Gambaran Umum</a>
+          <a href="#">Agenda</a>
+          <a href="#">Berita</a>
+          <a href="#">Urban Farming</a>
         </div>
       </div>
 
@@ -235,7 +234,7 @@
         <div class="footer-soc">
           <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" title="YouTube"><i class="fab fa-youtube"></i></a>
+          <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
           <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
       </div>
@@ -385,29 +384,26 @@
           emptyEl.style.display = "block";
         } else {
           emptyEl.style.display = "none";
-          gridEl.innerHTML = view
-            .map(
-              (it) => `
-            <article class="agenda-card-v">
-              <div class="agenda-thumb">
-                <img src="${it.img}" alt="${it.title}" />
-              </div>
-              <div class="agenda-content">
-                <h3 class="agenda-title">${it.title}</h3>
-                <div class="agenda-mini">
-                  <span><i class="far fa-calendar-alt"></i> ${formatDate(
-                    it.date
-                  )} · ${it.time || ""}</span>
-                  <span><i class="fas fa-location-dot"></i> ${
-                    it.place || "-"
-                  }</span>
-                </div>
-                <p class="agenda-desc">${it.desc || ""}</p>
-              </div>
-            </article>
-          `
-            )
-            .join("");
+         gridEl.innerHTML = view
+  .map(
+    (it) => `
+      <article class="agenda-card-v">
+        <div class="agenda-thumb">
+          <img src="${it.img}" alt="${it.title}" />
+        </div>
+        <div class="agenda-content">
+          <h3 class="agenda-title">${it.title}</h3>
+          <div class="agenda-mini">
+           
+            <span><i class="fas fa-location-dot"></i> ${it.place || "-"}</span>
+          </div>
+          <p class="agenda-desc">${it.desc || ""}</p>
+        </div>
+      </article>
+    `
+  )
+  .join("");
+
         }
       }
 
@@ -645,3 +641,115 @@
     </style>
   </body>
 </html>
+
+<!-- MODAL AGENDA -->
+<div class="agenda-modal-backdrop">
+  <div class="agenda-modal" role="dialog" aria-modal="true" aria-labelledby="agendaModalTitle">
+    <div class="agenda-modal-header">
+      <h3 id="agendaModalTitle" class="agenda-modal-title">Detail Agenda</h3>
+      <button class="agenda-modal-close" aria-label="Tutup">&times;</button>
+    </div>
+    <div class="agenda-modal-body">
+      <div class="agenda-modal-hero"><img alt="" /></div>
+      <div class="agenda-modal-content">
+        <div class="agenda-modal-meta"></div>
+        <div class="agenda-modal-desc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL BERITA -->
+<div class="news-modal-backdrop">
+  <div class="news-modal" role="dialog" aria-modal="true" aria-labelledby="newsModalTitle">
+    <div class="news-modal-header">
+      <h3 id="newsModalTitle" class="news-modal-title">Detail Berita</h3>
+      <button class="news-modal-close" aria-label="Tutup">&times;</button>
+    </div>
+    <div class="news-modal-body">
+      <div class="news-modal-hero"><img alt="" /></div>
+      <div class="news-modal-content">
+        <div class="news-modal-meta"></div>
+        <div class="news-modal-desc"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>(function agendaModalInit() {
+  // buat elemen modal sekali saja
+  const backdrop = document.createElement('div');
+  backdrop.className = 'agenda-modal-backdrop';
+  backdrop.innerHTML = `
+    <div class="agenda-modal" role="dialog" aria-modal="true" aria-labelledby="agendaModalTitle">
+      <div class="agenda-modal-header">
+        <h3 id="agendaModalTitle" class="agenda-modal-title">Detail Agenda</h3>
+        <button class="agenda-modal-close" aria-label="Tutup">&times;</button>
+      </div>
+      <div class="agenda-modal-body">
+        <div class="agenda-modal-hero"><img alt="" /></div>
+        <div class="agenda-modal-content">
+          <div class="agenda-modal-meta"></div>
+          <div class="agenda-modal-desc"></div>
+        </div>
+      </div>
+    </div>
+  `;
+  document.body.appendChild(backdrop);
+
+  const modal = backdrop.querySelector('.agenda-modal');
+  const btnClose = backdrop.querySelector('.agenda-modal-close');
+  const elImg   = backdrop.querySelector('.agenda-modal-hero img');
+  const elTitle = backdrop.querySelector('#agendaModalTitle');
+  const elMeta  = backdrop.querySelector('.agenda-modal-meta');
+  const elDesc  = backdrop.querySelector('.agenda-modal-desc');
+
+  function openFromCard(card){
+    // Ambil data dari card
+    const title = card.querySelector('.agenda-title')?.textContent?.trim() || 'Agenda';
+    const img   = card.querySelector('.agenda-thumb img')?.getAttribute('src') || '';
+    const desc  = card.querySelector('.agenda-desc')?.textContent?.trim() || '';
+    const meta  = card.querySelector('.agenda-mini')?.textContent?.trim() || '';
+
+    // Isi modal
+    elTitle.textContent = title;
+    elImg.src = img;
+    elImg.alt = title;
+    elMeta.textContent = meta;
+    elDesc.textContent = desc;
+
+    // Tampilkan modal
+    backdrop.classList.add('open');
+    // kunci scroll belakang
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+
+    // Fokus pada tombol tutup untuk aksesibilitas
+    btnClose.focus();
+  }
+
+  function closeModal(){
+    backdrop.classList.remove('open');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+  }
+
+  // Tutup modal: klik backdrop luar, tombol X, tekan Esc
+  backdrop.addEventListener('click', (e) => {
+    if (e.target === backdrop) closeModal();
+  });
+  btnClose.addEventListener('click', closeModal);
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeModal();
+  });
+
+  // Tambahkan listener ke setiap card agenda
+  const agendaCards = document.querySelectorAll('.agenda-card-v');
+  agendaCards.forEach(card => {
+    card.style.cursor = 'pointer';  // Ubah kursor menjadi pointer
+    card.addEventListener('click', () => {
+      openFromCard(card);  // Buka modal saat card di-klik
+    });
+  });
+})();
+</script>
