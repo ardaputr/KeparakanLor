@@ -791,8 +791,27 @@ body {
 } */
 
 .intro-logo-box {
-  max-width: 180px;
-  margin: 0 auto;
+    /* max-width: 100%; (dihapus karena tidak perlu) */
+    margin: 0; /* Pastikan margin auto dihilangkan di sini */
+}
+
+/* FIX: Terapkan style Video Ratio di dalam intro-logo-box */
+.intro-logo-box .video-ratio-wrapper {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%; /* Rasio 16:9 */
+    border-radius: 0.5rem;
+    overflow: hidden;
+    background-color: #000;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Tambahkan bayangan jika diperlukan */
+}
+
+.intro-logo-box .video-ratio-wrapper iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
 }
 .intro-content h2 {
   font-size: 1.8rem;
@@ -825,9 +844,11 @@ body {
 }
 
 @media (min-width: 992px) {
-  .intro-logo-box {
-    max-width: 240px; /* desktop lebih besar */
-  }
+    /* PENTING: HAPUS max-width: 240px AGAR VIDEO MENGISI 50% KOLOM GRID */
+    .intro-logo-box {
+        max-width: none; /* MEMASTIKAN VIDEO MENGAMBIL LEBAR PENUH KOLOM GRID (1fr) */
+        margin: 0;
+    }
 }
 
 /* ============ STATISTIK (2 KARTU SAJA) ============ */

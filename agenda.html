@@ -18,7 +18,7 @@
   </head>
   <body>
     <!-- TOP BAR -->
-    <div class="topbar">
+    <!-- <div class="topbar">
       <div class="topbar-inner container">
         <div class="top-left">
           <div>
@@ -48,7 +48,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- NAVBAR -->
     <header class="navbar" id="navbar">
@@ -230,13 +230,13 @@
       </div>
 
       <div class="container footer-bottom">
-        <div>Copyright © Keparakan Lor · All rights reserved</div>
-        <div class="footer-soc">
+        <div>Copyright © Keparakan Lor & KKN AB 83.330 · All rights reserved</div>
+        <!-- <div class="footer-soc">
           <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
           <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
           <a href="#" title="Youtube"><i class="fab fa-youtube"></i></a>
           <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
-        </div>
+        </div> -->
       </div>
     </footer>
 
@@ -253,44 +253,44 @@
       // ====== DATA AGENDA (boleh tambah sebanyaknya) ======
       const AGENDA_DATA = [
         {
-          title: "Musyawarah Warga RW 01",
+          title: "Kenduri Suro",
           date: "2025-11-12",
           time: "19:30 WIB",
-          place: "Balai RW 01",
+          place: "Area Kampung Keparakan Lor",
           img: "img/agenda1.jpg",
-          desc: "Pembahasan penataan UMKM kuliner & branding kampung tematik.",
+          desc: "Tradisi tahunan menyambut bulan Suro dengan doa bersama dan hiburan rakyat.",
         },
         {
-          title: "Kerja Bakti Kebersihan",
+          title: "Iredafest",
           date: "2025-11-16",
           time: "07:00 WIB",
-          place: "Area Kampung Keparakan Lor",
+          place: "Jalan Ireda",
           img: "img/agenda2.jpg",
-          desc: "Aksi bersih lingkungan dan pemilahan sampah menuju kampung hijau.",
+          desc: "Festival budaya dan seni lokal di sepanjang Jalan Ireda.",
         },
         {
-          title: "Pelatihan Kewirausahaan UMKM",
+          title: "Lomba Mancing",
           date: "2025-11-20",
           time: "09:00 WIB",
-          place: "Aula Kelurahan",
+          place: "Area Sekitar Sungai Code",
           img: "img/agenda3.jpg",
-          desc: "Branding, pengemasan, dan pemasaran digital untuk UMKM.",
-        },
-        {
-          title: "Posyandu Balita Rutin",
-          date: "2025-10-28",
-          time: "08:00 WIB",
-          place: "Posyandu Anggrek",
-          img: "img/agenda4.jpg",
-          desc: "Penimbangan balita, imunisasi dasar, dan penyuluhan gizi.",
+          desc: "Kompetisi memancing untuk warga dengan hadiah menarik (Acara Tahunan).",
         },
         {
           title: "Sosialisasi Bank Sampah RW 09",
           date: "2025-12-03",
           time: "15:30 WIB",
-          place: "Balai RW 09",
-          img: "img/agenda5.jpg",
+          place: "Rumah Khusus Bank Sampah Tiap RW",
+          img: "img/agenda4.jpg",
           desc: "Skema setor-tarik dan pelaporan Bank Sampah.",
+        },
+        {
+          title: "Posyandu Balita & Lansia",
+          date: "2025-10-28",
+          time: "08:00 WIB",
+          place: "Posyandu Tiap RW",
+          img: "img/agenda5.jpg",
+          desc: "Penimbangan balita, imunisasi dasar, dan penyuluhan gizi. Pemeriksaan kesehatan lansia.",
         },
         {
           title: "Kenduri Suro",
@@ -301,55 +301,55 @@
           desc: "Seremoni budaya tahunan sebagai ungkapan syukur warga.",
         },
         {
-          title: "Pelatihan APAR & Tanggap Awal Kebakaran",
+          title: "Senam Pagi RW 08",
           date: "2025-12-12",
           time: "13:00 WIB",
-          place: "Halaman Kelurahan",
+          place: "RTHP RW 08",
           img: "img/agenda7.jpg",
-          desc: "Simulasi APAR dan penanggulangan kebakaran awal.",
+          desc: "Senam setiap Sabtu untuk kebugaran warga.",
         },
         {
-          title: "Pertemuan Rutin PKK",
+          title: "Budidaya Tanaman Sayur",
           date: "2025-11-25",
           time: "16:00 WIB",
-          place: "Balai RW 08",
+          place: "RTHP RW 09 & Tempat Kelompok Tani RW 10",
           img: "img/agenda8.jpg",
-          desc: "Evaluasi program gizi keluarga dan ekonomi kreatif.",
+          desc: "Urban farming untuk ketahanan pangan keluarga.",
         },
-        {
-          title: "Jum’at Bersih",
-          date: "2025-11-14",
-          time: "06:30 WIB",
-          place: "Sepanjang Gang Utama",
-          img: "img/agenda9.jpg",
-          desc: "Fokus drainase & kebersihan saluran.",
-        },
+        // {
+        //   title: "Jum’at Bersih",
+        //   date: "2025-11-14",
+        //   time: "06:30 WIB",
+        //   place: "Sepanjang Gang Utama",
+        //   img: "img/agenda9.jpg",
+        //   desc: "Fokus drainase & kebersihan saluran.",
+        // },
 
-        // Tambahan dummy untuk menunjukkan paging
-        {
-          title: "Pelatihan Budidaya Sayur",
-          date: "2025-12-05",
-          time: "08:00 WIB",
-          place: "Green House Kampung",
-          img: "img/agenda3.jpg",
-          desc: "Pengenalan hidroponik pemula.",
-        },
-        {
-          title: "Senam Pagi Lansia",
-          date: "2025-11-10",
-          time: "06:30 WIB",
-          place: "Balai RW 10",
-          img: "img/agenda2.jpg",
-          desc: "Senam rutin untuk kebugaran lansia.",
-        },
-        {
-          title: "Lomba Kebersihan RT",
-          date: "2025-12-22",
-          time: "07:00 WIB",
-          place: "Seluruh RT",
-          img: "img/agenda1.jpg",
-          desc: "Penilaian lingkungan & partisipasi warga.",
-        },
+        // // Tambahan dummy untuk menunjukkan paging
+        // {
+        //   title: "Pelatihan Budidaya Sayur",
+        //   date: "2025-12-05",
+        //   time: "08:00 WIB",
+        //   place: "Green House Kampung",
+        //   img: "img/agenda3.jpg",
+        //   desc: "Pengenalan hidroponik pemula.",
+        // },
+        // {
+        //   title: "Senam Pagi Lansia",
+        //   date: "2025-11-10",
+        //   time: "06:30 WIB",
+        //   place: "Balai RW 10",
+        //   img: "img/agenda2.jpg",
+        //   desc: "Senam rutin untuk kebugaran lansia.",
+        // },
+        // {
+        //   title: "Lomba Kebersihan RT",
+        //   date: "2025-12-22",
+        //   time: "07:00 WIB",
+        //   place: "Seluruh RT",
+        //   img: "img/agenda1.jpg",
+        //   desc: "Penilaian lingkungan & partisipasi warga.",
+        // },
       ];
 
       const gridEl = document.getElementById("agendaGrid");
